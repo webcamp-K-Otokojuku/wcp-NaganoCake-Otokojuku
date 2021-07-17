@@ -10,6 +10,18 @@
   </head>
 
   <body>
+    <header>
+      <div class="container">
+        <a class="navbar-brand" href="/">ながのCAKE</a>
+        <ul>
+          <% if customer_signed_in? %>
+            
+          <% elsif admin_signed_in? %>
+          
+          <% end %>
+        </ul>
+      </div>
+    </header>
     <%= yield %>
   </body>
 </html>
