@@ -1,4 +1,27 @@
-<h1>Homes#top</h1>
-<p>Find me in app/views/homes/top.html.erb</p>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-3">
+        <%= render 'genres/index' %>
+    </div>
+    <div class="col-md-8">
+        <div class="d-block col-md-8 offset-md-1">
+            <div class="card">
+              <%= image_tag('Sample-Top.jpg' , size: "550x400", class: 'card-img')%>
+              <div class="card-img-overlay d-flex align-items-center">
+                <p class="card-text bg-white border border-dark">                        
+                ようこそ、ながのCAKEへ！</br>
+                このサイトは、ケーキ販売のECサイトになります。</br>
+                会員でない方も商品の閲覧はできますが、</br>
+                購入には会員登録が必要になります。</br>
+                </p>
+              </div>
+            </div>
+            <p>
+                <h2>新着商品</h2>
+            </p>
+        </div>
+    </div>
+  </div>
+</div>
 
 
