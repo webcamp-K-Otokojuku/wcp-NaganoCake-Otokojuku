@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
-
-  # before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
 
   # 管理者側と顧客側のログイン後遷移先
@@ -22,8 +21,13 @@ class ApplicationController < ActionController::Base
   #   end
   # end
 
-#   protected
 
-#   def configure_permitted_parameters
+
+
+  protected
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :first_name_kana, :last_name_kana, :address, :postcode, :tel])
+  end
+
 
 end
