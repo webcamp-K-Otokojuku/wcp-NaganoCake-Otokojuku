@@ -2,26 +2,26 @@
 
 <%= form_with model: @customer, url: customer_registration_path, id: 'new_customer', class: 'new_customer', local: true do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
-  
+
   <div class="field">
   <table>
     <tr>
       <td>
         <p>名前</p>
       </td>
-      
+
       <td>
         <p><%= f.label :first_name, "(姓)" %></p>
       </td>
-      
+
       <td class="table_form">
         <%= f.text_field :first_name, placeholder: "令和", autofocus: true %>
       </td>
-      
+
       <td class="table_kana">
         <p><%= f.label :first_name, "(名)" %></p>
       </td>
-      
+
       <td class="table_right">
         <%= f.text_field :first_name, placeholder: "道子", autofocus: true %>
       </td>e
@@ -115,7 +115,7 @@
     </tr>
   </table>
 
-  
+
 
 <% end %>
 
