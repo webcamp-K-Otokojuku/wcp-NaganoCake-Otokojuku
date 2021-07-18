@@ -12,9 +12,18 @@ class ApplicationController < ActionController::Base
       root_path
     end
   end
-  
+
+  # def after_sign_out_path_for(resource)
+  #   case resource
+  #   when Admin
+  #     new_admin_session_path
+  #   when Customer
+  #     root_path
+  #   end
+  # end
+
 #   protected
-  
+
 #   def configure_permitted_parameters
-    
+
 end
