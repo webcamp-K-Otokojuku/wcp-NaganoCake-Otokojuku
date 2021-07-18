@@ -32,16 +32,6 @@
         </tr>
         <tr>
           <td>
-            <p><%= f.label :email, "メールアドレス" %></p>
-          </td>
-          <td></td>
-          <td>
-            <%= f.email_field :email, autocomplete: "email" %>
-          </td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>
             <p><%= f.label :postcode, "郵便番号(ハイフンなし)" %></p>
           </td>
           <td></td>
@@ -61,11 +51,21 @@
         </tr>
         <tr>
           <td>
-            <p><%= f.label :postcode, "電話番号(ハイフンなし)" %></p>
+            <p><%= f.label :tel, "電話番号(ハイフンなし)" %></p>
           </td>
           <td></td>
           <td>
-            <%= f.text_field :postcode %>
+            <%= f.text_field :tel %>
+          </td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>
+            <p><%= f.label :email, "メールアドレス" %></p>
+          </td>
+          <td></td>
+          <td>
+            <%= f.email_field :email, autocomplete: "email" %>
           </td>
           <td></td>
         </tr>

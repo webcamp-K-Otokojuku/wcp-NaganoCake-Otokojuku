@@ -11,11 +11,11 @@
       </td>
       
       <td>
-        <p><%= f.label :last_name, "(姓)" %></p>
+        <p><%= f.label :first_name, "(姓)" %></p>
       </td>
       
       <td class="table_form">
-        <%= f.text_field :last_name, placeholder: "令和", autofocus: true %>
+        <%= f.text_field :first_name, placeholder: "令和", autofocus: true %>
       </td>
       
       <td class="table_kana">
@@ -31,16 +31,16 @@
         <p>フリガナ</p>
       </td>
       <td>
-        <p><%= f.label :last_name_kana, "(セイ)" %></p>
+        <p><%= f.label :first_name_kana, "(セイ)" %></p>
       </td>
       <td>
-        <%= f.text_field :last_name_kana, placeholder: "レイワ", autofocus: true %>
+        <%= f.text_field :first_name_kana, placeholder: "レイワ", autofocus: true %>
       </td>
       <td class="table_kana">
-        <p><%= f.label :first_name_kana, "(メイ)" %></p>
+        <p><%= f.label :last_name_kana, "(メイ)" %></p>
       </td>
       <td class="table_right">
-        <%= f.text_field :first_name_kana, placeholder: "ミチコ", autofocus: true %>
+        <%= f.text_field :last_name_kana, placeholder: "ミチコ", autofocus: true %>
       </td>
     </tr>
     <tr>
@@ -108,7 +108,7 @@
       <td></td>
       <td>
         <div class="actions">
-          <%= f.submit "新規登録", class: "btn btn-success" %>
+          <%= f.submit "新規登録" %>
         </div>
       </td>
       <td></td>
