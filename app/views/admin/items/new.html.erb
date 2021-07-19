@@ -1,0 +1,47 @@
+<div class="containar">
+  <div class="row no-gutters">
+    <div class="col-md-3 text-center m-5">
+      <h3 class="text- bg-light p-0">商品新規登録</h3>
+    </div>
+
+    <div class='col-md-10 offset-md-1'>
+      <%= form_with model: @item,url: admin_items_path, local: true do |f| %>
+        <div class='form-group'>
+          <label class="mr-5">商品画像</label>
+          <%= f.attachment_field :item_image %>
+        </div>
+
+        <div class='form-group'>
+          <lable class="mr-5">商品名</lable>
+          <%= f.text_field :name,  placeholder: '商品名' %>
+        </div>
+
+        <div class='form-group'>
+          <lable class="mr-5">商品説明</lable>
+          <%= f.text_area :introduction,  placeholder: 'ここに説明文を記述します' %>
+        </div>
+
+        <!--https://qiita.com/ohnitakahiro/items/c536fe65e37980e1087e　参考サイト-->
+        <div class='form-group'>
+          <lable class="mr-5">ジャンル</lable>
+          <%= f.collection_select(:genre_id, @genres, :id, :category, prompt: '-- 選択してください --') %>
+        </div>
+
+        <div class='form-group'>
+          <lable class="mr-5">税抜価格</lable>
+          <%= f.text_field :price, placeholder: '1000' %> 円
+        </div>
+
+        <div class='form-group'>
+          <lable class="mr-5">販売ステータス</lable>
+          <%= f.radio_button :status, "販売中" %> 販売中 <%= f.radio_button :status, "販売停止中" %> 販売停止中
+        </div>
+
+        <div class="actions">
+          <lable class="mr-5"></lable>
+          <%= f.submit "新規登録", class:"btn btn-success btn-md" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -9,11 +9,10 @@
     </tr>
   </thead>
   <tbody>
+    <% @genres.each do |genre| %>
     <tr>
-      <td>ケーキ</td>
+      <td><%= genre.category %></td>
     </tr>
-    <tr>
-      <td>焼き菓子</td>
-    </tr>
+    <% end %>
   </tbody>
 </table>
