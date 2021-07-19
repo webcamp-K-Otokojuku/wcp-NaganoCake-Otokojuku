@@ -19,7 +19,6 @@ Customer.create!(
   email: "japan@japan.com",
   postcode: "1008914",
   address: "東京都千代田区永田町1-6-1",
-  tel: "0120508046",
   password: "abenomikusu",
   password_confirmation: "abenomikusu"
 )
@@ -32,7 +31,6 @@ Customer.create!(
   email: "america@america.com",
   postcode: "1008914",
   address: "アメリカ合衆国ワシントンDCペンシルベニア大通り1600",
-  tel: "0120223399",
   password: "yourefire",
   password_confirmation: "yourefire"
 )
