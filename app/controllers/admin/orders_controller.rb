@@ -3,6 +3,8 @@ class Admin::OrdersController < ApplicationController
   before_action :authenticate_admin!
 
   def index
+    @orders = Order.all
+
   end
 
   def show
@@ -10,9 +12,9 @@ class Admin::OrdersController < ApplicationController
 
   def update
   end
-  
+
   private
-  
+
   def order_params
     params.require(:order).permit(:status)
   end
