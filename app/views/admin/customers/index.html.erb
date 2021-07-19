@@ -1,0 +1,40 @@
+<h2>会員一覧</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>
+        <p>会員ID</p>
+      </th>
+      <th>
+        <p>氏名</p>
+      </th>
+      <th>
+        <p>メールアドレス</p>
+      </th>
+      <th>
+        <p>ステータス</p>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @customers.each do |customer| %>
+    <tr>
+      <td>
+        <p><%= customer.id %></p>
+      </td>
+      <td>
+        <p><%= customer.last_name %><%= customer.first_name %></p>
+      </td>
+      <td>
+        <p><%= customer.email %></p>
+      </td>
+      <td>
+        <p>ステータス</p>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<!--ページ機能追加-->
