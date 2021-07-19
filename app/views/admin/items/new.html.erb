@@ -24,7 +24,7 @@
         <!--https://qiita.com/ohnitakahiro/items/c536fe65e37980e1087e　参考サイト-->
         <div class='form-group'>
           <lable class="mr-5">ジャンル</lable>
-          <%= f.collection_select(:genre_id, @genres, :id, :name, prompt: '-- 選択してください --') %>
+          <%= f.collection_select(:genre_id, @genres, :id, :category, prompt: '-- 選択してください --') %>
         </div>
 
         <div class='form-group'>
