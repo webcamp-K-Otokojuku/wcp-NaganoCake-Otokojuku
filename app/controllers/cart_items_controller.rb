@@ -1,6 +1,6 @@
 class CartItemsController < ApplicationController
   def index
-    # @cart = CartItems.all
+    @cart = current_customer.cart_items
   end
   
   def update
