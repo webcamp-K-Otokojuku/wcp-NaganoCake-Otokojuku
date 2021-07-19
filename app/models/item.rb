@@ -8,9 +8,13 @@ class Item < ApplicationRecord
 
   attachment :item_image
 
-  enum status: {
-    "販売中": 0,
-    "販売停止中": 1
-  }
+
+  # enum status: {
+  #   "販売中": 0,
+  #   "販売停止中": 1
+  # }
+  def tax_price
+    (self.price * 1.08).round
+  end
 
 end
