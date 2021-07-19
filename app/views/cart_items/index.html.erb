@@ -1,5 +1,6 @@
 <h2>ショッピングカート</h2>
-<span class="btn btn-danger">カートを空にする</span>
+  <span class="btn btn-danger all_delete_btn">カートを空にする</span>
+
 
 <table border="1">
   <tr>
@@ -9,6 +10,7 @@
     <th>小計</th>
     <th></th>
   </tr>
+  <% @sum = 0 %>
   <% @cart.each do |item| %>
   <tr>
     <td>
@@ -18,7 +20,7 @@
       <%= item.price %>
     </td>
     <td>
-      <%= item.quantity %>
+      <%= select_tag :item.quantity, options_for_select((1..5).to_a) %>
       <span class="btn btn-success">変更</span>
     </td>
     <td>
@@ -28,6 +30,7 @@
       <span class="btn btn-danger">削除する</span>
     </td>
   </tr>
+  <% sum += item.price %>
   <% end %>
 </table>
 
@@ -36,7 +39,7 @@
 <table>
   <tr>
     <td>合計金額</td>
-    <td>1700</td>
+    <td><%= @sum %></td>
   </tr>
 </table>
 
