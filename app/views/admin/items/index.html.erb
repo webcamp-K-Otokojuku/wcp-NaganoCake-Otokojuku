@@ -1,7 +1,12 @@
 <div class="container">
   <div class="row no-gutters">
-    <div class="col-md-3 text-center m-5">
-      <h3 class="text-light bg-dark p-0">商品一覧</h3>
+    <div class="col-sm-3 text-center m-5">
+      <table>
+        <tr>
+          <th class="size pr-5">商品一覧</th>
+          <td><%= link_to "", new_admin_item_path, class: "far fa-plus-square" %></td>
+        </tr>
+      </table>
     </div>
 
     <table class="table border-bottom">
@@ -24,7 +29,7 @@
                 <% item.name %>
               <% end %>
             </td>
-            <td><%= item.price %></td>
+            <td><%= item.price.to_s(:delimited) %> 円</td>
             <td><%= item.genre.category %></td>
             <td>
 
