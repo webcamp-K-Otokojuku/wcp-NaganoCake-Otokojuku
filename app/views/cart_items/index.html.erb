@@ -9,18 +9,26 @@
     <th>小計</th>
     <th></th>
   </tr>
+  <% @cart.each do |item| %>
   <tr>
-    <tdチョコ</td>
-    <td>1000</td>
     <td>
-      1
+      <%= item.name %>
+    </td>
+    <td>
+      <%= item.price %>
+    </td>
+    <td>
+      <%= item.quantity %>
       <span class="btn btn-success">変更</span>
     </td>
-    <td>1,100</td>
+    <td>
+      <%= item.price %>
+    </td>
     <td>
       <span class="btn btn-danger">削除する</span>
     </td>
   </tr>
+  <% end %>
 </table>
 
 <span class="btn btn-primary">買い物を続ける</span>
