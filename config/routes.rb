@@ -18,7 +18,8 @@ Rails.application.routes.draw do
   post '/orders/confirm' => 'orders#confirm'
   get '/orders/complete' => 'orders#complete'
 
-  resource :customers, only:[:show,:edit,:update]
+  resource :customers, only:[:show,:edit]
+  patch '/customers/update' => 'customers#update'
   get '/customers/hide' => 'customers#hide'
   patch '/customers/hide' => 'customers#hide'
 
