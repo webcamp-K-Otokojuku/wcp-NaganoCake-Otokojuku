@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
+  
+  helper_method :current_cart
 
 
   # 管理者側と顧客側のログイン後遷移先
@@ -20,7 +22,15 @@ class ApplicationController < ActionController::Base
   #     root_path
   #   end
   # end
-
+  
+  def current_cart
+    if session[:cart_item_id]
+      @cart = CartItem.find(session[:cart_item_id])
+    else
+      @cart = CartItem.create
+      session[:cart_item_id] = @cart.id
+    end
+  end
 
 
 

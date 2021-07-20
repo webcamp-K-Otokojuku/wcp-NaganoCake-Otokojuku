@@ -27,6 +27,7 @@ Rails.application.routes.draw do
 
   resources :cart_items, only:[:index,:update,:destroy]
   delete '/cart_items/all_destroy' => 'cart_items#all_destroy'
+  post '/add_item' => 'cart_items#add_item'
 
 
   # ここから管理者側
