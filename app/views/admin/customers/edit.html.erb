@@ -1,7 +1,7 @@
 <div class="col-md-6">
   <h2 class="bg-light">会員情報編集</h2>
 
-  <%= form_with model: @customer, url: admin_customers_path, local: true do |f| %>
+  <%= form_with model: @customer, url: admin_customer_path(@customer.id), local: true do |f| %>
     <div class="fald">
       <table class="table">
         <tr>
@@ -37,13 +37,12 @@
         </tr>
         <tr>
           <td>
-            <p><%= f.label :postcode, "郵便番号(ハイフンなし)" %></p>
+            <p><%= f.label :postcode, "郵便番号" %></p>
           </td>
           <td></td>
           <td>
-            <%= f.text_field :postcode %>
+            <p><%= f.text_field :postcode, placeholder:"ハイフンなし" %></p>
           </td>
-          <td></td>
         </tr>
         <tr>
           <td>
@@ -56,13 +55,12 @@
         </tr>
         <tr>
           <td>
-            <p><%= f.label :tel, "電話番号(ハイフンなし)" %></p>
+            <p><%= f.label :tel, "電話番号" %></p>
           </td>
           <td></td>
           <td>
-            <%= f.text_field :tel %>
+            <p><%= f.text_field :tel, placeholder:"ハイフンなし" %></p>
           </td>
-          <td></td>
         </tr>
         <tr>
           <td>
@@ -78,6 +76,13 @@
           <td></td>
           <td>
             <%= f.radio_button :status, "有効" %> 有効 <%= f.radio_button :status, "退会" %> 退会
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td>
+            <%= f.submit '変更を保存', class:"btn btn-success" %>
           </td>
         </tr>
       <table>
