@@ -1,8 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   
-  helper_method :current_cart
-
 
   # 管理者側と顧客側のログイン後遷移先
   def after_sign_in_path_for(resource)
@@ -23,14 +21,7 @@ class ApplicationController < ActionController::Base
   #   end
   # end
   
-  def current_cart
-    if session[:cart_item_id]
-      @cart = CartItem.find(session[:cart_item_id])
-    else
-      @cart = CartItem.create
-      session[:cart_item_id] = @cart.id
-    end
-  end
+  #セッションの作成
 
 
 

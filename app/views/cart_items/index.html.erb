@@ -1,5 +1,7 @@
 <h2>ショッピングカート</h2>
-  <span class="btn btn-danger all_delete_btn">カートを空にする</span>
+  <span class="btn btn-danger all_delete_btn">
+    <%= link_to "カートを空にする", cart_items_all_destroy_path, method: :delete %>
+  </span>
 
 
 <table border="1">
@@ -10,27 +12,33 @@
     <th>小計</th>
     <th></th>
   </tr>
-  <% @sum = 0 %>
-  <% @cart.each do |item| %>
+  <% @cart_items.each do |cart| %>
   <tr>
     <td>
-      <%= item.name %>
+      <%= cart.item.name %>
     </td>
+    
     <td>
-      <%= item.price %>
+      <%= cart.item.tax_price.to_s(:delimited) %>円
     </td>
+    
     <td>
-      <%= select_tag :item.quantity, options_for_select((1..5).to_a) %>
-      <span class="btn btn-success">変更</span>
+      <%= select_tag cart.quantity, options_for_select({"1": 1, "2": 2, "3": 3, "4":4, "5":5}, cart.quantity), include_blank: true  %>
+      <span class="btn btn-danger">
+        <%= link_to "変更", cart_item_path(cart.id), method: :patch %>
+      </span>
     </td>
+    
     <td>
-      <%= item.price %>
+      <%= (cart.item.tax_price* cart.quantity ).to_s(:delimited) %>円
     </td>
+    
     <td>
-      <span class="btn btn-danger">削除する</span>
+      <span class="btn btn-danger">
+        <%= link_to "削除", cart_item_path(cart.id), method: :delete %>
+      </span>
     </td>
   </tr>
-  <% sum += item.price %>
   <% end %>
 </table>
 
@@ -39,7 +47,7 @@
 <table>
   <tr>
     <td>合計金額</td>
-    <td><%= @sum %></td>
+    <td><%=  %></td>
   </tr>
 </table>
 
