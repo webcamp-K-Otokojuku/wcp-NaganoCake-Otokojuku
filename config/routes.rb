@@ -14,9 +14,10 @@ Rails.application.routes.draw do
   # ここから顧客側
   resources :items, only:[:index,:show]
 
-  resources :orders, only:[:new,:create,:index,:show]
   post '/orders/confirm' => 'orders#confirm'
   get '/orders/complete' => 'orders#complete'
+  resources :orders, only:[:new,:create,:index,:show]
+
 
   resource :customers, only:[:show,:edit]
   patch '/customers/update' => 'customers#update'

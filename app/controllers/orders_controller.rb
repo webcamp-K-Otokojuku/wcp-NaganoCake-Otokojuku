@@ -42,19 +42,18 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.new(orders_params)
-    # byebug
-    # order = Order.new(session[:order])
-		# Order.build(session[:order])
-    #Order.save
-		# Order.create(session[:order])
-		# session.delete(:order)
 
-    if @order.save
+    order = Order.new(session[:order])
+
+    if order.save
       session.delete(:order)
-      redirect_to orders_path
+      redirect_to orders_complete_path
     else
-      render :new, @order
+      @order = Order.new
+      @customer = current_customer
+      @orders = Order.all
+      @shopping_addresses = current_customer.shopping_addresses.all
+      render :new
     end
   end
 
@@ -70,11 +69,11 @@ class OrdersController < ApplicationController
 
   end
 
-  private
+#   private
 
-	def orders_params
-		params.require(:order).permit(:id, :postcode, :name, :address, :total_price, :fee, :status, :pay_way, :customer_id)
-	end
+# 	def orders_params
+# 		params.require(:order).permit(:postcode, :name, :address, :total_price, :fee, :status, :pay_way)
+# 	end
 
 
 
