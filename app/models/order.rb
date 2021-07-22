@@ -9,7 +9,7 @@ class Order < ApplicationRecord
     "銀行振込": 1
 }
 
-  enum order_status: {
+  enum status: {
     "入金待ち": 0,
     "入金確認": 1,
     "製作中": 2,
