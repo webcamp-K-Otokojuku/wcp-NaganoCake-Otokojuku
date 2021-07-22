@@ -24,7 +24,9 @@
         <p><%= customer.id %></p>
       </td>
       <td>
-        <p><%= customer.last_name %><%= customer.first_name %></p>
+        <%= link_to admin_customer_path(customer.id) do %>
+          <p><%= customer.last_name %><%= customer.first_name %></p>
+        <% end %>
       </td>
       <td>
         <p><%= customer.email %></p>
