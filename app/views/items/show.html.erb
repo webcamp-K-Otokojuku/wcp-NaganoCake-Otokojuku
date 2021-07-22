@@ -34,7 +34,7 @@
           <td>
             <%= form_with model: @cart_item, url: add_item_path ,local: true do |f| %>
               <%= f.hidden_field :item_id, :value => @item.id %>
-              <%= f.select :quantity, [["1", 1 ], ["2", 2 ], ["3", 3 ], ["4", 4 ], ["5", 5 ]], include_blank: "個数選択" %>
+              <%= f.select :quantity, options_for_select((1..99).to_a), include_blank: "個数選択" %>
               <%= f.submit 'カートに入れる', class:"btn btn-success" %>
             <% end %>
           </td>
