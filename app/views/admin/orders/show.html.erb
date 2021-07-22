@@ -5,14 +5,14 @@
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-md-6 offset-md-1">
+  <div class="row pb-5 mt-0">
+    <div class="col-12">
       <table>
         <tbody>
           <tr>
             <th>購入者</th>
             <td>
-              <%= link_to admin_customer_path(@order) do %>
+              <%= link_to admin_customer_path(@order.customer_id) do %>
                 <%= @order.customer.last_name %> <%= @order.customer.first_name %>
               <% end %>
             </td>
@@ -21,7 +21,7 @@
 
           <tr>
             <th>注文日</th>
-            <td><%= @order.create_at.strftime('%Y/%m/%d') %></td>
+            <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
             <td></td>
           </tr>
 
@@ -39,10 +39,12 @@
 
           <!--?-->
           <tr>
-            <%= form_with (model: @order,url: admin_order_path, local: true, class: "form-row") do |f| %>
+            <%= form_with(model: @order,url: admin_order_path, local: true, class: "form-row") do |f| %>
               <th>注文ステータス</th>
-              <td><%= f.select :status, Order.statuses_i18n.invert, {prompt: false}, class:"form-control" %></td>
-              <td><%= f.submit "更新", class: "btn btn-succes" %></td>
+              <td><%= f.select :status,  Order.order_statuses.keys %></td>
+              <!--invert, {prompt: false}-->
+
+              <td><%= f.submit "更新", class: "btn btn-success btn-block" %></td>
             <% end %>
           </tr>
         </tbody>
@@ -51,8 +53,8 @@
   </div>
 
   <div class="row">
-    <div class="col-md-9">
-      <table class="table border-bottom">
+    <div class="col-sm-9">
+      <table class="table border-bottom bg-light">
         <thead>
           <tr>
             <th>商品名</th>
@@ -72,12 +74,13 @@
             <td><%= (order_item.include_tax * order_item.quantity).to_s(:delimited) %> 円</td>
             <td>
               <%= form_with model: order_item,url: admin_order_item_path(order_item), local: true do |f| %>
-                <%= f.select :status, OrderItem.statuses.keys.to_a, {} %>
-                <%= f.submit "更新", class: "btn btn-succes" %>
+                <%= f.select :status, OrderItem.statuses.keys %>
+                <%= f.submit "更新", class: "btn btn-success btn-block" %>
               <% end %>
             </td>
           </tr>
         </tbody>
+        <% end %>
       </table>
     </div>
 
