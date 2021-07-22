@@ -26,13 +26,14 @@
             <td><%= item.id %></td>
             <td>
               <%= link_to admin_item_path(item) do %>
-                <% item.name %>
+                <%= item.name %>
               <% end %>
             </td>
             <td><%= item.price.to_s(:delimited) %> 円</td>
             <td><%= item.genre.category %></td>
             <td>
-
+              <!--http://banker0507.blogspot.com/2012/07/booleantruefalse.html 参考サイト-->
+              <%= item.status ? "販売中" : "販売停止中" %>
             </td>
           </tr>
         <% end %>

@@ -30,13 +30,13 @@
         <!--https://nllllll.com/ruby-on-rails/%E3%80%90rails%E3%80%91%E6%B6%88%E8%B2%BB%E7%A8%8E%E3%81%AE%E8%A8%88%E7%AE%97/-->
         <tr>
           <th height="50">税込価格<br />(税抜価格)</th>
-          <td><%= @item.tax_price.to_s(:delimited) %> (<%= (@item.price) %>) 円</td>
+          <td><%= @item.tax_price.to_s(:delimited) %> (<%= (@item.price.to_s(:delimited)) %>) 円</td>
         </tr>
 
         <tr>
           <th height="100">販売ステータス</th>
           <td>
-            <%= @item.status %>
+            <%= @item.status ? "販売中" : "販売停止中" %>
           </td>
         </tr>
 
@@ -44,6 +44,7 @@
           <th></th>
           <td><%= link_to "編集する", edit_admin_item_path(@item), class: "btn btn-success btn-lg" %></td>
         </tr>
+
       </table>
     </div>
 
