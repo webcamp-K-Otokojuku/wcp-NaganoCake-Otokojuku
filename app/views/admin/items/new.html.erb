@@ -34,7 +34,8 @@
 
         <div class='form-group'>
           <lable class="mr-5">販売ステータス</lable>
-          <%= f.radio_button :status, "販売中" %> 販売中 <%= f.radio_button :status, "販売停止中" %> 販売停止中
+          <%= f.radio_button :status, true %> 販売中
+          <%= f.radio_button :status, false %> 販売停止中
         </div>
 
         <div class="actions">
