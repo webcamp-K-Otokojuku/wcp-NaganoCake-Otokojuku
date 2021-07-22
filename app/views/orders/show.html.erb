@@ -1,0 +1,56 @@
+   <h3><strong>show</strong></h3>
+
+  <table>
+    <tr>
+      <td>注文日</td>
+      <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
+    </tr>
+    <tr>
+      <td>配送先</td>
+      <td>
+        〒<%= @order.postcode %>
+        <%= @order.address %>
+        <%= @order.name %>
+      </td>
+    </tr>
+    <tr>
+      <td>支払方法</td>
+      <td><%= @order.pay_way %></td>
+    </tr>
+    <tr>
+      <td>ステータス</td>
+      <td><%= @order.status %></td>
+    </tr>
+  </table>
+
+  <table>
+    <tr>
+      <td>商品合計</td>
+      <td><%= %></td>
+    </tr>
+    <tr>
+      <td>配送料</td>
+      <td><%= @order.fee %></td>
+    </tr>
+    <tr>
+      <td>ご請求額</td>
+      <td><%=  %></td>
+    </tr>
+  </table>
+
+  <table>
+    <tr>
+      <th>商品</th>
+      <th>単価(税込み)</th>
+      <th>個数</th>
+      <th>小計</th>
+    </tr>
+    <% @order_items.each do |order_item| %>
+      <tr>
+        <td><%= order_item.item.name %></td>
+        <td><%= order_item.include_tax %></td>
+        <td><%= order_item.quantity %></td>
+        <td><%=  %></td>
+      </tr>
+    <% end %>
+  </table>
