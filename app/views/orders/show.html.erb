@@ -50,7 +50,7 @@
         <td><%= order_item.item.name %></td>
         <td><%= order_item.include_tax %></td>
         <td><%= order_item.quantity %></td>
-        <td><%=  %></td>
+        <td><%= order_item.include_tax * order_item.quantity %></td>
       </tr>
     <% end %>
   </table>
