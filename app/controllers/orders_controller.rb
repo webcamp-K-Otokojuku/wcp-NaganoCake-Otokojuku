@@ -29,7 +29,7 @@ class OrdersController < ApplicationController
       session[:order][:name] = customer.last_name + customer.first_name
       session[:order][:address] = customer.address
     when 1 then
-      address = ShoppingAddress.find(params[:shipping_address_for_order])
+      address = ShoppingAddress.find(params[:shopping_address_for_order])
       session[:order][:postcode] = address.postcode
       session[:order][:name] = address.name
       session[:order][:address] = address.address
