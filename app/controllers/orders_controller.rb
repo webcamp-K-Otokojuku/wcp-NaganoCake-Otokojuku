@@ -53,7 +53,7 @@ class OrdersController < ApplicationController
         order_item = OrderItem.new
         order_item.quantity = cart_item.quantity
         order_item.status = 0
-        order_item.include_tax = (cart_item.item.price * 1.1).floor
+        order_item.include_tax = (cart_item.item.price * 1.08).floor
         order_item.item_id = cart_item.item.id
         order_item.order_id = order.id
         order_item.save
@@ -75,11 +75,12 @@ class OrdersController < ApplicationController
 
   def index
     @orders = current_customer.orders.all
-    @order_items = OrderItem.all
+
   end
 
   def show
-
+    @order = Order.find(params[:id])
+    @order_items = @order.order_items.all
   end
 
 #   private
