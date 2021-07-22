@@ -14,8 +14,12 @@ class OrdersController < ApplicationController
 
     session[:order][:fee] = 800
 
-
-
+    total = 0
+    @cart_items.each do |cart_item| 
+       total += (cart_item.item.price * 1.08).floor * cart_item.quantity
+    end 
+    
+    session[:order][:total_price] = total + session[:order][:fee]
     session[:order][:status] = 0
     session[:order][:customer_id] = current_customer.id
 
@@ -47,9 +51,9 @@ class OrdersController < ApplicationController
 
     if order.save
       session.delete(:order)
-      cart_items = current_customer.cart_items.all
+      @cart_items = current_customer.cart_items.all
 
-      cart_items.each do |cart_item|
+      @cart_items.each do |cart_item|
         order_item = OrderItem.new
         order_item.quantity = cart_item.quantity
         order_item.status = 0

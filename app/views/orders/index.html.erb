@@ -18,13 +18,13 @@
               <%= order.name%>
             </td>
             <td>
-              <% total_price = 0 %>
+              <%# total_price = 0 %>
               <% order.order_items.each do |order_item| %>
                 <%= order_item.item.name %></br>
-                <% total_price += order_item.include_tax * order_item.quantity %>
+                <%# total_price += order_item.include_tax * order_item.quantity %>
               <% end %>
             </td>
-            <td><%= total_price.to_s(:delimited) %>円</td>
+            <td><%= order.total_price.to_s(:delimited) %>円</td>
             <td><%= order.status %></td>
             <td><%= link_to "表示する", order_path(order), class: "btn btn-primary" %></td>
           </tr>

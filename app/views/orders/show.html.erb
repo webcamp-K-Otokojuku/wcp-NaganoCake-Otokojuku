@@ -26,7 +26,7 @@
   <table>
     <tr>
       <td>商品合計</td>
-      <td><%= %></td>
+      <td><%= @order.total_price - @order.fee %></td>
     </tr>
     <tr>
       <td>配送料</td>
@@ -34,7 +34,7 @@
     </tr>
     <tr>
       <td>ご請求額</td>
-      <td><%=  %></td>
+      <td><%= @order.total_price %></td>
     </tr>
   </table>
 
