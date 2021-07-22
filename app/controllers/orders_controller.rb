@@ -9,7 +9,7 @@ class OrdersController < ApplicationController
 
   def confirm
     customer = current_customer
-
+    @cart_items = current_customer.cart_items.all
     session[:order] = Order.new
 
     session[:order][:fee] = 800
@@ -47,6 +47,18 @@ class OrdersController < ApplicationController
 
     if order.save
       session.delete(:order)
+      cart_items = current_customer.cart_items.all
+
+      cart_items.each do |cart_item|
+        order_item = OrderItem.new
+        order_item.quantity = cart_item.quantity
+        order_item.status = 0
+        order_item.include_tax = (cart_item.item.price * 1.08).floor
+        order_item.item_id = cart_item.item.id
+        order_item.order_id = order.id
+        order_item.save
+        # byebug
+      end
       redirect_to orders_complete_path
     else
       @order = Order.new
@@ -62,11 +74,13 @@ class OrdersController < ApplicationController
   end
 
   def index
-    @orders = Order.all
+    @orders = current_customer.orders.all
+
   end
 
   def show
-
+    @order = Order.find(params[:id])
+    @order_items = @order.order_items.all
   end
 
 #   private
@@ -78,4 +92,3 @@ class OrdersController < ApplicationController
 
 
 end
-
