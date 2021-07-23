@@ -13,8 +13,8 @@ class OrdersController < ApplicationController
     session[:order] = Order.new
 
     session[:order][:fee] = 800
-
-
+    session[:order][:total_price] = 0
+    
 
     session[:order][:status] = 0
     session[:order][:customer_id] = current_customer.id
@@ -44,7 +44,6 @@ class OrdersController < ApplicationController
   def create
 
     order = Order.new(session[:order])
-
     if order.save
       session.delete(:order)
       cart_items = current_customer.cart_items.all
