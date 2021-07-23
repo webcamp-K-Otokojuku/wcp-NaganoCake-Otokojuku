@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
 
   def index
     @genres = Genre.all
-    @items = Item.all
+    @items = Item.page(params[:page]).per(8)
 
 
   end
@@ -13,6 +13,6 @@ class ItemsController < ApplicationController
     @cart_item = CartItem.new
 
   end
-  
+
 
 end
