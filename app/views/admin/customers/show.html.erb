@@ -32,7 +32,9 @@
     </tr>
     <tr>
       <td><p>ステータス</p></td>
-      <td></td>
+      <td>
+        <p><%= @customer.is_deleted ? "退会" : "有効" %></p>
+      </td>
     </tr>
     <tr>
       <td></td>
