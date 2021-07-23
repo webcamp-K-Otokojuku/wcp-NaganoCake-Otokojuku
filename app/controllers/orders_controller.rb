@@ -15,10 +15,11 @@ class OrdersController < ApplicationController
     session[:order][:fee] = 800
 
     total = 0
-    @cart_items.each do |cart_item| 
-       total += (cart_item.item.price * 1.08).floor * cart_item.quantity
-    end 
-    
+    @cart_items.each do |cart_item|
+      #tax_priceはitemメソッドで定義されている
+       total += cart_item.item.tax_price * cart_item.quantity
+    end
+
     session[:order][:total_price] = total + session[:order][:fee]
     session[:order][:status] = 0
     session[:order][:customer_id] = current_customer.id
