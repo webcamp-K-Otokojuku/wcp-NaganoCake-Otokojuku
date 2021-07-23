@@ -73,11 +73,11 @@
             <td><%= order_item.quantity %></td>
             <td><%= (order_item.include_tax * order_item.quantity).to_s(:delimited) %> 円</td>
             <td>
-            <%= form_with model: order_item,url: admin_order_order_item_path(order_item), local: true do |f| %>
-              <%= f.select :status, OrderItem.statuses.keys %>
+              <%= form_with model: order_item,url: admin_order_order_item_path(order_item), local: true do |f| %>
+                <%= f.select :status, OrderItem.statuses.keys %>
+                <%= f.submit "更新", class: "btn btn-success btn-block" %>
+              <% end %>
             </td>
-            <td><%= f.submit "更新", class: "btn btn-success btn-block" %></td>
-            <% end %>
           </tr>
         </tbody>
         <% end %>

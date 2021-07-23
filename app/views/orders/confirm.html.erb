@@ -28,7 +28,7 @@
         <table class="table table-bordered">
           <tr>
             <th>送料</th>
-            <td><%= session[:order][:fee] %></td>
+            <td><%= session[:order][:fee].to_s(:delimited) %>円</td>
           </tr>
           <tr>
             <th>商品合計</th>
