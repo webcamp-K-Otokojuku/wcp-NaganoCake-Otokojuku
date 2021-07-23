@@ -14,6 +14,10 @@ class CustomersController < ApplicationController
     redirect_to customers_path
   end
 
+  def hide
+
+  end
+
   private
 
   def customer_params
