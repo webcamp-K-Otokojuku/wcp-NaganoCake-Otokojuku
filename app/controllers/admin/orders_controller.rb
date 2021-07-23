@@ -14,8 +14,12 @@ class Admin::OrdersController < ApplicationController
 
 
   def update
-    @order = Order.find(params[:id])
-    @order.update(order_params)
+    order = Order.find(params[:id])
+    order.update(order_params)
+    if order.status == "入金確認"
+      OrderItem.update_all(status: "制作待ち")
+      # byebug
+    end
     redirect_to request.referer
   end
 
