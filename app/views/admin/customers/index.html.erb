@@ -32,7 +32,7 @@
         <p><%= customer.email %></p>
       </td>
       <td>
-        <p>ステータス</p>
+        <p><%= customer.is_deleted ? "退会" : "有効" %></p>
       </td>
     </tr>
     <% end %>
@@ -40,3 +40,4 @@
 </table>
 
 <!--ページ機能追加-->
+<%= paginate @customers %>
