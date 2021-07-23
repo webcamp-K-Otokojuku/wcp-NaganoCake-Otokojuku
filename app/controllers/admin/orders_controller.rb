@@ -10,14 +10,17 @@ class Admin::OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
     @order_items = @order.order_items
-    @order.total_price = 100
   end
 
-  
+
   def update
-    @order = Order.find(params[:id])
-    @order.update(order_params)
-    redirect_to admin_order_path(@order)
+    order = Order.find(params[:id])
+    order.update(order_params)
+    if order.status == "入金確認"
+      OrderItem.update_all(status: "制作待ち")
+      # byebug
+    end
+    redirect_to request.referer
   end
 
   private
