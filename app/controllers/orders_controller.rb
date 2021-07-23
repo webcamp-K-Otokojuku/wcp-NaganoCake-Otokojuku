@@ -49,7 +49,6 @@ class OrdersController < ApplicationController
   def create
 
     order = Order.new(session[:order])
-
     if order.save
       session.delete(:order)
       @cart_items = current_customer.cart_items.all
