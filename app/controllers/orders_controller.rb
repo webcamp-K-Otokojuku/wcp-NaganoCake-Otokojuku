@@ -74,7 +74,7 @@ class OrdersController < ApplicationController
   end
 
   def complete
-
+    CartItem.destroy_all
   end
 
   def index
