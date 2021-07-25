@@ -1,4 +1,7 @@
 class ShoppingAddressesController < ApplicationController
+  
+  before_action :authenticate_customer!
+  
   def index
     @shopping_addresses = current_customer.shopping_addresses
     @shopping_address = ShoppingAddress.new
