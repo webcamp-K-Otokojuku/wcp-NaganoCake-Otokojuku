@@ -17,11 +17,12 @@ class Admin::OrdersController < ApplicationController
     order = Order.find(params[:id])
     order.update(order_params)
     if order.status == "入金確認"
-      OrderItem.update_all(status: "制作待ち")
-      # byebug
+      order_items = order.order_items
+      order_items.update_all(status: "制作待ち")
     end
-    redirect_to request.referer
+    redirect_to admin_order_path(order)
   end
+
 
   private
 

@@ -25,9 +25,11 @@
             <td><%= order.status %></td>
           </tr>
           <% end %>
-          <%= paginate @orders %>
         </tbody>
       </table>
+      <div class="d-flex justify-content-center mt-5">
+        <%= paginate @orders %>
+      </div>
     </div>
   </div>
 </div>
