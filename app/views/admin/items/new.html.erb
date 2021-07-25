@@ -3,46 +3,52 @@
     <div class="col-md-3 text-center m-5">
       <h3 class="text- bg-light p-0">商品新規登録</h3>
     </div>
+  </div>
 
+  <div class="row">
     <div class='col-md-10 offset-md-1'>
       <%= form_with model: @item,url: admin_items_path, local: true do |f| %>
-        <div class='form-group'>
-          <label class="mr-5">商品画像</label>
-          <%= f.attachment_field :item_image %>
-        </div>
+      <table>
+        <tr>
+          <th>商品画像</th>
+          <td><%= f.attachment_field :item_image %></td>
+        </tr>
 
-        <div class='form-group'>
-          <lable class="mr-5">商品名</lable>
-          <%= f.text_field :name,  placeholder: '商品名' %>
-        </div>
+        <tr>
+          <th class="pt-5">商品名</th>
+          <td class="pt-5"><%= f.text_field :name,  placeholder: '商品名' %></td>
+        </tr>
 
-        <div class='form-group'>
-          <lable class="mr-5">商品説明</lable>
-          <%= f.text_area :introduction,  placeholder: 'ここに説明文を記述します' %>
-        </div>
+        <tr>
+          <th class="pt-5">商品説明</th>
+          <td class="pt-5"><%= f.text_area :introduction,  placeholder: 'ここに説明文を記述します' %></td>
+        </tr>
 
         <!--https://qiita.com/ohnitakahiro/items/c536fe65e37980e1087e　参考サイト-->
-        <div class='form-group'>
-          <lable class="mr-5">ジャンル</lable>
-          <%= f.collection_select(:genre_id, @genres, :id, :category, prompt: '-- 選択してください --') %>
-        </div>
+        <tr>
+          <th class="pt-5">ジャンル</th>
+          <td class="pt-5"><%= f.collection_select(:genre_id, @genres, :id, :category, prompt: '-- 選択してください --') %></td>
+        </tr>
 
-        <div class='form-group'>
-          <lable class="mr-5">税抜価格</lable>
-          <%= f.text_field :price, placeholder: '1000' %> 円
-        </div>
+        <tr>
+          <th class="pt-5">税抜価格</th>
+          <td class="pt-5"><%= f.text_field :price, placeholder: '1000' %> 円</td>
+        </tr>
 
-        <div class='form-group'>
-          <lable class="mr-5">販売ステータス</lable>
-          <%= f.radio_button :status, true %> 販売中
-          <%= f.radio_button :status, false %> 販売停止中
-        </div>
+        <tr>
+          <th class="pt-5">販売ステータス</th>
+          <td class="pt-5 pl-3">
+            <%= f.radio_button :status, true %> 販売中
+            <%= f.radio_button :status, false %> 販売停止中
+            <%= f.submit "新規登録", class:"btn btn-success btn-md" %>
+          </td>
+        </tr>
 
-        <div class="actions">
-          <lable class="mr-5"></lable>
-          <%= f.submit "新規登録", class:"btn btn-success btn-md" %>
-        </div>
+      </table>
       <% end %>
     </div>
   </div>
 </div>
+
+
+
