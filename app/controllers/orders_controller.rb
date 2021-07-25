@@ -61,7 +61,6 @@ class OrdersController < ApplicationController
         order_item.item_id = cart_item.item.id
         order_item.order_id = order.id
         order_item.save
-        # byebug
       end
       redirect_to orders_complete_path
     else
