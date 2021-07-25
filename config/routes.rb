@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   patch '/customers/update' => 'customers#update'
   get '/customers/hide' => 'customers#hide'
   patch '/customers/hide' => 'customers#hide'
+  patch '/customers/withdrawal' => 'customers#withdrawal'
 
   resources :shopping_addresses, except:[:show]
 
