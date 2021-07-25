@@ -1,12 +1,12 @@
-<div class="container px-5 px-sm-0">
+<div class="container mt-5 px-5 px-sm-0">
   <div class="row">
     <div class="col-md-3">
         <%= render 'genres/index' %>
     </div>
     <div class="col-md-8">
-        <div class="d-block col-md-8 offset-md-1">
+        <div class="d-block col-md-10 ">
             <div class="card">
-              <%= image_tag('Sample-Top.jpg' , size: "550x400", class: 'card-img')%>
+              <%= image_tag('Sample-Top.jpg' , size: "550x300", class: 'card-img')%>
               <div class="card-img-overlay d-flex align-items-center">
                 <p class="card-text bg-white border border-dark">
                 ようこそ、ながのCAKEへ！</br>
@@ -16,26 +16,24 @@
                 </p>
               </div>
             </div>
-              <table>
-                <thead>
-                  <h2>新着商品</h2>
-                </thead>
-                <tbody>
-                  <% @items.first(4).each do |item| %>
-                  <tr>
-                    <td>
-                      <%= link_to item_path(item) do%>
-                        <%= attachment_image_tag item, :item_image, :fill, 250, 150, format: 'jpeg', fallback: "no_image.jpg" %>
-                      <% end %>
-                      <p><%= item.name %></p>
-                      <p><%= item.price.to_s(:delimited) %></p>
-                    </td>
-                  </tr>
-                  <% end %>
-                </tbody>
-              </table>
-              <%= link_to "すべての商品を見る", items_path %>
         </div>
+        <h2>新着商品</h2>
+        <div class="container">
+          <div class="row">
+            <% @items.first(4).each do |item| %>
+              <div class="col-md-3">
+                <div class="card  mt-2 p-1 w-100">
+                    <%= link_to item_path(item) do%>
+                      <%= attachment_image_tag item, :item_image, :fill, 150, 150, format: 'jpeg', fallback: "no_image.jpg" %>
+                    <% end %>
+                   <p><%= item.name %></p>
+                  <p>￥<%= item.price.to_s(:delimited) %></p>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <p class="text-right"><%= link_to "すべての商品を見る", items_path %></p>
     </div>
   </div>
 </div>
