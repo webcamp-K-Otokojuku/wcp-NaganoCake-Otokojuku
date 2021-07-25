@@ -6,7 +6,6 @@ class ItemsController < ApplicationController
     @items_count = Item.all
     # 商品の全件数表示のため「@items_count」を定義
 
-
   end
 
   def show
