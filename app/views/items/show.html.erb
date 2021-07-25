@@ -1,11 +1,11 @@
-<div class="container px-5 px-sm-0">
+<div class="container mt-5 px-5 px-sm-0">
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-2 mt-5">
         <%= render 'genres/index' %>
     </div>
-    <div class="col-md-8 offset-md-1">
-      <%= attachment_image_tag @item, :item_image, :fill, 300, 300, format: 'jpeg', fallback: "no_image.jpg" %>
-      <table>
+    <div class="col-md-9 offset-md-1">
+      <%= attachment_image_tag @item, :item_image, :fill, 500, 300, format: 'jpeg', fallback: "no_image.jpg" %>
+      <table class="table table-white w-50">
         <tr>
           <th height="50">商品名</th>
           <td><%= @item.name %></td>
@@ -23,19 +23,27 @@
         </tr>
 
         <tr>
-          <th height="100">販売ステータス</th>
+          <th height="50">販売ステータス</th>
           <td>
-            <%= @item.status  ? "販売中" : "販売停止中" %>
+            <% if @item.status == true %>
+              <p class="text-success">販売中</p>
+            <% else %>
+              <p class="text-danger">販売停止中</p>
+            <% end %>
           </td>
         </tr>
+      </table>
 
+      <table>
         <% if customer_signed_in? %>
         <tr>
           <td>
-            <%= form_with model: @cart_item, url: add_item_path ,local: true do |f| %>
-              <%= f.hidden_field :item_id, :value => @item.id %>
-              <%= f.select :quantity, options_for_select((1..99).to_a), include_blank: "個数選択" %>
-              <%= f.submit 'カートに入れる', class:"btn btn-success" %>
+            <% if @item.status == true %>
+              <%= form_with model: @cart_item, url: add_item_path ,local: true do |f| %>
+                <%= f.hidden_field :item_id, :value => @item.id %>
+                <%= f.select :quantity, options_for_select((1..99).to_a), include_blank: "個数選択" %><br>
+                <%= f.submit 'カートに入れる', class:"btn btn-success mt-3" %>
+              <% end %>
             <% end %>
           </td>
         </tr>
