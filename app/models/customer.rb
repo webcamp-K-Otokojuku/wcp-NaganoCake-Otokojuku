@@ -9,10 +9,16 @@ class Customer < ApplicationRecord
   
   has_many :cart_items, dependent: :destroy
   
+  [:first_name, :last_name, :first_name_kana, :last_name_kana, :address, :postcode, :tel].each do |v|
+    validates v, presence: true
+  end 
+  
   enum is_deleted: { '退会': true, '有効': false }
   
   def active_for_authentication?
     super && self.is_deleted == "有効"
   end
+  
+  
 
 end

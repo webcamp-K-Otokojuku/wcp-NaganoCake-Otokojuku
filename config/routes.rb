@@ -9,10 +9,7 @@ Rails.application.routes.draw do
       registrations: 'admins/registrations'
   }
 
-  devise_for :customers, :controllers => {
-    :sessions => 'customers/sessions'
-  }
-  
+  devise_for :customers
 
   # ここから顧客側
   resources :items, only:[:index,:show]
@@ -23,11 +20,10 @@ Rails.application.routes.draw do
 
 
   resource :customers, only:[:show,:edit]
-  patch '/customers/withdrawal' => 'customers#withdrawal'
   patch '/customers/update' => 'customers#update'
   get '/customers/hide' => 'customers#hide'
   patch '/customers/hide' => 'customers#hide'
-  
+  patch '/customers/withdrawal' => 'customers#withdrawal'
 
   resources :shopping_addresses, except:[:show]
 
