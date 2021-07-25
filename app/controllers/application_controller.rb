@@ -5,6 +5,9 @@ class ApplicationController < ActionController::Base
 
   # 管理者側と顧客側のログイン後遷移先
   def after_sign_in_path_for(resource)
+    puts "=========="
+    p resource
+    puts "=========="
     case resource
     when Admin
       admin_orders_path
@@ -13,14 +16,17 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  # def after_sign_out_path_for(resource)
-  #   case resource
-  #   when Admin
-  #     new_admin_session_path
-  #   when Customer
-  #     root_path
-  #   end
-  # end
+  def after_sign_out_path_for(resource)
+    puts "=========="
+    p resource
+    puts "=========="
+    case resource
+    when :admin
+      new_admin_session_path
+    when :customer
+      root_path
+    end
+  end
 
   #セッションの作成
 
