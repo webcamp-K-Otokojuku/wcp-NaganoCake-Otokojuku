@@ -15,10 +15,7 @@ class Item < ApplicationRecord
   end
 
 
-  # enum status: {
-  #   "販売中": 0,
-  #   "販売停止中": 1
-  # }
+  
   def tax_price
     (self.price * 1.08).round
   end

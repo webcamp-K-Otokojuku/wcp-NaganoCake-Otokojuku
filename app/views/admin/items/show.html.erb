@@ -11,7 +11,7 @@
     </div>
 
     <div class="col-sm-8">
-      <table>
+      <table class="table table-white w-50">
         <tr>
           <th height="50">商品名</th>
           <td><%= @item.name %></td>
@@ -34,9 +34,13 @@
         </tr>
 
         <tr>
-          <th height="100">販売ステータス</th>
+          <th height="50">販売ステータス</th>
           <td>
-            <%= @item.status ? "販売中" : "販売停止中" %>
+            <% if @item.status == true %>
+              <p class="text-success">販売中</p>
+            <% else %>
+              <p class="text-danger">販売停止中</p>
+            <% end %>
           </td>
         </tr>
 
