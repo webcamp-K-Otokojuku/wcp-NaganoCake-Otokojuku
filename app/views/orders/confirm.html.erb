@@ -1,9 +1,15 @@
-  <div class="container">
-    <div class="row">
+  <div class="container mt-5 px-1 px-sm-0 ml-5">
 
-      <div  class="col-9">
+    <div class="row">
+      <div class="col-3 offset-md-1">
+        <h3 class="bg-light text-center">注文情報確認</h3>
+      </div>
+    </div>
+
+    <div class="row">
+      <div  class="col-9 ml-auto">
         <table class="table table-bordered">
-          <tr>
+          <tr class="table-secondary">
             <th>商品名</th>
             <th>単価(税込み)</th>
             <th>数量</th>
@@ -13,12 +19,12 @@
           <tr>
             <td>
               <!--item_id_change　出ないとエラーが起きる-->
-              <%= attachment_image_tag cart_item.item, :item_image, :fill, 100, 80, format: 'jpeg', fallback: "no_image.jpg", size: '100x80' %>
+              <%= attachment_image_tag cart_item.item, :item_image, :fill, 100, 50, format: 'jpeg', fallback: "no_image.jpg", size: '100x50' %>
               <%= cart_item.item.name %>
             </td>
-            <td><%= ((cart_item.item.price * 1.08).floor).to_s(:delimited) %></td>
-            <td><%= cart_item.quantity %></td>
-            <td><%= ((cart_item.item.price * 1.08).floor * cart_item.quantity).to_s(:delimited)  %></td>
+            <td class="align-middle"><%= cart_item.item.tax_price.to_s(:delimited) %>円</td>
+            <td class="align-middle"><%= cart_item.quantity %></td>
+            <td class="align-middle"><%= (cart_item.item.tax_price * cart_item.quantity).to_s(:delimited)%>円</td>
           </tr>
           <% end %>
         </table>
@@ -27,42 +33,48 @@
       <div class="col-3">
         <table class="table table-bordered">
           <tr>
-            <th>送料</th>
+            <th class="table-secondary">送料</th>
             <td><%= session[:order][:fee].to_s(:delimited) %>円</td>
           </tr>
           <tr>
-            <th>商品合計</th>
+            <th class="table-secondary">商品合計</th>
             <td>
-              <%= (session[:order][:total_price] - session[:order][:fee]).to_s(:delimited) %>
+              <%= (session[:order][:total_price] - session[:order][:fee]).to_s(:delimited) %>円
             </td>
           </tr>
           <tr>
-            <th>請求金額</th>
-            <td><%= session[:order][:total_price].to_s(:delimited) %></td>
+            <th class="table-secondary">請求金額</th>
+            <td><%= session[:order][:total_price].to_s(:delimited) %>円</td>
           </tr>
         </table>
       </div>
+    </div>
 
-       <div class="col-9 billing">
+    <div class="row">
+       <div class="col-9">
          <table class="table table-borderless">
           <tr>
-            <th>支払方法</th>
+            <th style="width: 11%">支払方法</th>
             <td><%= session[:order]["pay_way"] %></td>
           </tr>
           <tr>
             <th>お届け先</th>
             <td>
-              <%= session[:order][:postcode] %>
+              〒<%= session[:order][:postcode] %>
               <%= session[:order][:address] %></br>
               <%= session[:order][:name] %>
             </td>
           </tr>
         </table>
-
-        <%= form_with method:@order,url: {controller: 'orders', action: 'create'}, local:true do |f| %>
-          <%= f.submit "注文を確定する" ,class: "btn btn-sm btn-primary"%>
-        <% end %>
        </div>
-
     </div>
+
+    <div class="row">
+      <div class="col-2 offset-md-5 mt-5">
+        <%= form_with method:@order,url: {controller: 'orders', action: 'create'}, local:true do |f| %>
+          <%= f.submit "注文を確定する" ,class: "btn w-100 btn-success"%>
+        <% end %>
+      </div>
+    </div>
+
   </div>
