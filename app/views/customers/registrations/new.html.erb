@@ -3,29 +3,29 @@
     <div class="col-md-12">
 
       <h2>新規会員登録</h2>
-      
+
       <%= form_with model: @customer, url: customer_registration_path, id: 'new_customer', class: 'new_customer', local: true do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
-      
+
         <div class="field">
         <table>
           <tr>
             <td>
               <p>名前</p>
             </td>
-      
+
             <td>
               <p><%= f.label :last_name, "(姓)" %></p>
             </td>
-      
+
             <td class="table_form">
               <%= f.text_field :last_name, placeholder: "令和", autofocus: true %>
             </td>
-      
+
             <td class="table_kana">
               <p><%= f.label :first_name, "(名)" %></p>
             </td>
-      
+
             <td class="table_right">
               <%= f.text_field :first_name, placeholder: "道子", autofocus: true %>
             </td>
@@ -118,16 +118,16 @@
             <td></td>
           </tr>
         </table>
-      
-      
-      
+
+
+
       <% end %>
-      
+
       <p>既に登録済みの方</p>
       <p>
         <div class="devise_link_to"><%= link_to "こちら", new_session_path(resource_name) %></div> からログインして下さい。
       </p>
-      
+
       </div>
     </div>
   </div>

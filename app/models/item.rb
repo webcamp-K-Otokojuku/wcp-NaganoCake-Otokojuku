@@ -10,7 +10,7 @@ class Item < ApplicationRecord
   [:name, :price, :introduction].each do |v|
     validates v, presence: true
   end
-  
+
 
 
   attachment :item_image
@@ -22,7 +22,7 @@ class Item < ApplicationRecord
 
 
   def tax_price
-    (self.price * 1.08).round
+    (self.price * 1.08).floor
   end
 
 end

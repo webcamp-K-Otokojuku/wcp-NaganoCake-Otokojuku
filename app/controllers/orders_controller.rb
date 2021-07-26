@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  
+
   before_action :authenticate_customer!
 
   def new
@@ -59,7 +59,7 @@ class OrdersController < ApplicationController
         order_item = OrderItem.new
         order_item.quantity = cart_item.quantity
         order_item.status = 0
-        order_item.include_tax = (cart_item.item.price * 1.08).floor
+        order_item.include_tax = cart_item.item.tax_price
         order_item.item_id = cart_item.item.id
         order_item.order_id = order.id
         order_item.save
