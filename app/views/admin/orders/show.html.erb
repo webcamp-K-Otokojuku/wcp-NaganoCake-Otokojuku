@@ -47,10 +47,10 @@
       </table>
       <% end %>
     </div>
-  </div>
 
 
-  <div class="row">
+
+
     <div class="col-sm-9">
       <table class="table border-bottom">
         <thead class="bg-light">
@@ -83,9 +83,22 @@
     </div>
 
     <div class="col-md-3">
-      <p>商品合計  <%= (@order.total_price - @order.fee).to_s(:delimited) %> 円</p>
-      <p>送料  <%= @order.fee %> 円</p>
-      <p>請求金額合計  <%= @order.total_price.to_s(:delimited) %> 円</p>
+      <table class="table table-bordered">
+        <tr>
+          <td>商品合計</td>
+          <td><%= (@order.total_price - @order.fee).to_s(:delimited) %> 円</td>
+        </tr>
+
+        <tr>
+          <td>送料</td>
+          <td><%= @order.fee %> 円</td>
+        </tr>
+
+        <tr>
+          <td>請求金額合計</td>
+          <td><%= @order.total_price.to_s(:delimited) %> 円</td>
+        </tr>
+      </table>
     </div>
   </div>
 </div>
