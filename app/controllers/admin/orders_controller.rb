@@ -18,7 +18,7 @@ class Admin::OrdersController < ApplicationController
     order.update(order_params)
     if order.status == "入金確認"
       order_items = order.order_items
-      order_items.update_all(status: "制作待ち")
+      order_items.update_all(status: "製作待ち")
     end
     redirect_to admin_order_path(order)
   end
