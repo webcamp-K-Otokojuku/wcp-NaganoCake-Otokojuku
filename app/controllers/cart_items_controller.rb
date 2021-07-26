@@ -1,7 +1,7 @@
 class CartItemsController < ApplicationController
-  
+
   before_action :authenticate_customer!
- 
+
   def index
     @cart_items = current_customer.cart_items
   end
@@ -15,12 +15,13 @@ class CartItemsController < ApplicationController
       cart.quantity += params[:cart_item][:quantity].to_i
       cart.save
       redirect_to cart_items_path
+    elsif cart_item.save
+        redirect_to cart_items_path
     else
-      cart_item.save
-      redirect_to cart_items_path
+        redirect_to item_path(item.id)
     end
   end
-  
+
   def update
     cart_item = CartItem.find(params[:id])
     cart_item.update(cart_item_params)
@@ -33,12 +34,12 @@ class CartItemsController < ApplicationController
     cart.destroy
     redirect_to cart_items_path
   end
-  
+
   def all_destroy
     CartItem.destroy_all
     redirect_to cart_items_path
   end
-  
+
 
   private
   def cart_item_params
