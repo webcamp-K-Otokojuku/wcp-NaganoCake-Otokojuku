@@ -30,6 +30,8 @@ Rails.application.routes.draw do
   delete '/cart_items/all_destroy' => 'cart_items#all_destroy'
   post '/add_item' => 'cart_items#add_item'
   resources :cart_items, only:[:index,:update,:destroy]
+  
+  get '/searches' => 'searches#search'
 
 
 
