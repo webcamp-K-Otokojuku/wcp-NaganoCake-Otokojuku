@@ -21,7 +21,7 @@ class CustomersController < ApplicationController
   def withdrawal
     current_customer.update(is_deleted: true)
     reset_session
-    redirect_to new_customer_session_path
+    redirect_to root_path
   end
 
   private

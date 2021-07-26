@@ -27,6 +27,12 @@ class ApplicationController < ActionController::Base
       root_path
     end
   end
+  
+  
+  # def after_inactive_sign_up_path_for(resource)
+  #   customers_path
+  # end
+
 
   #セッションの作成
 
