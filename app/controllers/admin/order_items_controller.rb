@@ -7,7 +7,7 @@ class Admin::OrderItemsController < ApplicationController
     order = order_item.order
     if order_items.where(status: '製作中').any?
       order.update(status: '製作中')
-    elsif order_items.where(status: '制作完了').any?
+    elsif order_items.where(status: '製作完了').any?
       order.update(status: '発送準備中')
     end
     redirect_to admin_order_path(order_item.order)
