@@ -21,3 +21,15 @@
 .size{
  font-size: 30px;
 }
+
+.searchicon::placeholder {
+ text-align: right;
+}
+
+.cart-total {
+ margin-left: auto;
+}
+
+.error-messe {
+ color: red;
+}
