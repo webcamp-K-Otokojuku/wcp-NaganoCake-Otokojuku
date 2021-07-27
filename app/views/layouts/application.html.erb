@@ -14,9 +14,12 @@
     <header>
       <nav class="navbar navbar-expand-lg navbar-dark bg-success">
         <div class="container">
-          <a class="navbar-brand" href="/">
-            <strong>ながのCAKE</strong>
-          </a>
+          <%= link_to root_path do %>
+            <%= image_tag('NaganoCAKELogo.png', size:"150x70") %>
+          <% end %>
+          <!--<a class="navbar-brand" href="/">-->
+          <!--  <strong>ながのCAKE</strong>-->
+          <!--</a>-->
 
           <% if customer_signed_in? %>
             <section class="welcome-message ml-5 mt-3 text-light">
@@ -94,6 +97,10 @@
     </header>
 
     <%= yield %>
+
+    <footer>
+      <p class="text-center py-5 text-light bg-success">©️ Otokojuku</p>
+    </footer>
 
   </body>
 </html>

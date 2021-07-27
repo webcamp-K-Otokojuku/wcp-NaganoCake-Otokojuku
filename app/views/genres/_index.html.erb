@@ -12,7 +12,7 @@
     <% @genres.each do |genre| %>
     <tr>
       <td>
-        <%= link_to searches_path('search[genreid]': genre.id) do %>
+        <%= link_to searches_path('search[value]': genre.id), class:"text-dark" do %>
           <%= genre.category %>
         <% end %>
       </td>

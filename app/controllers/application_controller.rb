@@ -1,20 +1,18 @@
 class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
-  
 
 
   # 管理者側と顧客側のログイン後遷移先
   def after_sign_in_path_for(resource)
-    if params[:controller] == "devise/registrations"
-      customers_path 
-    else
-      case resource
-      when Admin
-        admin_orders_path
-      when Customer
-        root_path
-      end
+    puts "=========="
+    p resource
+    puts "=========="
+    case resource
+    when Admin
+      admin_orders_path
+    when Customer
+      root_path
     end
   end
 
@@ -29,9 +27,8 @@ class ApplicationController < ActionController::Base
       root_path
     end
   end
-  
-  
-  
+
+
   # def after_inactive_sign_up_path_for(resource)
   #   customers_path
   # end
