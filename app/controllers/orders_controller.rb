@@ -79,7 +79,7 @@ class OrdersController < ApplicationController
   end
 
   def index
-    @orders = current_customer.orders.all
+    @orders = current_customer.orders.all.order(created_at: :desc)
 
   end
 
