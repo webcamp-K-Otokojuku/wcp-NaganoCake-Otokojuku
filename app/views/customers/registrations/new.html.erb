@@ -5,8 +5,8 @@
       <h2>新規会員登録</h2>
 
       <%= form_with model: @customer, url: customer_registration_path, id: 'new_customer', class: 'new_customer', local: true do |f| %>
-        <%= render "devise/shared/error_messages", resource: resource %>
-
+        <% if @customer.errors.any? %>
+        <% end %>
         <div class="field">
         <table>
           <tr>
@@ -20,6 +20,9 @@
 
             <td class="table_form">
               <%= f.text_field :last_name, placeholder: "令和", autofocus: true %>
+              <% if @customer.errors.include?(:last_name) %>
+                <p class="error-messe"><%= @customer.errors.full_messages_for(:last_name).first %></p>
+              <% end %>
             </td>
 
             <td class="table_kana">
@@ -28,6 +31,9 @@
 
             <td class="table_right">
               <%= f.text_field :first_name, placeholder: "道子", autofocus: true %>
+              <% if @customer.errors.include?(:first_name) %>
+                <p class="error-messe"><%= @customer.errors.full_messages_for(:first_name).first %></p>
+              <% end %>
             </td>
           </tr>
           <tr>
@@ -35,16 +41,22 @@
               <p>フリガナ</p>
             </td>
             <td>
-              <p><%= f.label :last_name_kana, "(セイ)" %></p>
+              <p><%= f.label :last_name_kana, "(セイ)" %>
             </td>
             <td>
               <%= f.text_field :last_name_kana, placeholder: "レイワ", autofocus: true %>
+              <% if @customer.errors.include?(:last_name_kana) %>
+                <p class="error-messe"><%= @customer.errors.full_messages_for(:last_name_kana).first %></p>
+              <% end %>
             </td>
             <td class="table_kana">
               <p><%= f.label :first_name_kana, "(メイ)" %></p>
             </td>
             <td class="table_right">
               <%= f.text_field :first_name_kana, placeholder: "ミチコ", autofocus: true %>
+              <% if @customer.errors.include?(:first_name_kana) %>
+                <p class="error-messe"><%= @customer.errors.full_messages_for(:first_name_kana).first %></p>
+              <% end %>
             </td>
           </tr>
           <tr>
@@ -54,6 +66,9 @@
             <td></td>
             <td>
               <%= f.email_field :email, placeholder: "sample@example.com", autofocus: true, autocomplete: "email" %>
+              <% if @customer.errors.include?(:email) %>
+                <p class="error-messe"><%= @customer.errors.full_messages_for(:email).first %></p>
+              <% end %>
             </td>
             <td></td>
           </tr>
@@ -64,6 +79,9 @@
             <td></td>
             <td>
               <%= f.text_field :postcode, placeholder: "000000", autofocus: true %>
+              <% if @customer.errors.include?(:postcode) %>
+                <p class="error-messe"><%= @customer.errors.full_messages_for(:postcode).first %></p>
+              <% end %>
             </td>
             <td></td>
           </tr>
@@ -74,6 +92,9 @@
             <td></td>
             <td colspan="3">
               <%= f.text_field :address, size: 55, placeholder: "東京都渋谷区代々木神園町0-0", autofocus: true %>
+              <% if @customer.errors.include?(:address) %>
+                <p class="error-messe"><%= @customer.errors.full_messages_for(:address).first %></p>
+              <% end %>
             </td>
           </tr>
           <tr>
@@ -83,6 +104,9 @@
             <td></td>
             <td>
               <%= f.text_field :tel, placeholder: "00000000000", autofocus: true %>
+              <% if @customer.errors.include?(:tel) %>
+                <p class="error-messe"><%= @customer.errors.full_messages_for(:tel).first %></p>
+              <% end %>
             </td>
             <td></td>
           </tr>
@@ -95,6 +119,9 @@
               <% if @minimum_password_length %>
               <% end %>
               <%= f.password_field :password, autocomplete: "new-password" %>
+              <% if @customer.errors.include?(:password) %>
+                <p class="error-messe"><%= @customer.errors.full_messages_for(:password).first %></p>
+              <% end %>
             </td>
             <td></td>
           </tr>
@@ -105,6 +132,9 @@
             <td></td>
             <td>
               <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+              <% if @customer.errors.include?(:password_confirmation) %>
+                <p class="error-messe"><%= @customer.errors.full_messages_for(:password_confirmation).first %></p>
+              <% end %>
             </td>
           </tr>
           <tr>

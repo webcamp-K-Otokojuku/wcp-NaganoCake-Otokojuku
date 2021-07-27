@@ -90,8 +90,7 @@
       <nav class="navbar navbar-expand-lg navbar-dark bg-success">
         <div class="container">
           <%= form_with url: searches_path, method: :get, class: "navbar-nav ml-auto" , local: true do |f|  %>
-            <%= f.text_field 'search[value]' %>
-            <%= f.submit :"検索" %>
+            <%= f.text_field 'search[value]', placeholder: "Search                           \uF002", class: 'fa searchicon' %>
           <% end %>
         </div>
       </nav>

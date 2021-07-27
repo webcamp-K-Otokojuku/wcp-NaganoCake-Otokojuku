@@ -1,10 +1,14 @@
 class SearchesController < ApplicationController
   def search
-    @value = params["search"]["value"]
-    p "============="
-    p @value
-    p "============="
-    datas = search_for(@value)
+    if params["search"]["genreid"].nil?
+      @value = params["search"]["value"]
+      datas = search_for(@value)
+      @item = @value
+    else
+      @value = params["search"]["genreid"]
+      datas = genre_search_for(@value)
+      @item = Genre.find(@value).category
+    end
     @items = datas.page(params[:page]).per(8)
     @genres = Genre.all
   end
@@ -12,6 +16,12 @@ class SearchesController < ApplicationController
   private
   
   def search_for(value)
-    Item.where("name LIKE ?", "%#{value}%").or(Item.where(genre_id: value))
+    Item.where("name LIKE ?", "%#{value}%")
   end
+  
+  def genre_search_for(value)
+    Item.where(genre_id: value)
+  end
+
+  
 end
