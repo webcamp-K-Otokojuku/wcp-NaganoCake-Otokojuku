@@ -5,21 +5,19 @@ class ApplicationController < ActionController::Base
 
   # 管理者側と顧客側のログイン後遷移先
   def after_sign_in_path_for(resource)
-    puts "=========="
-    p resource
-    puts "=========="
-    case resource
-    when Admin
-      admin_orders_path
-    when Customer
-      root_path
+    if params[:controller] == "devise/registrations"
+      customers_path 
+    else
+      case resource
+      when Admin
+        admin_orders_path
+      when Customer
+        root_path
+      end
     end
   end
 
   def after_sign_out_path_for(resource)
-    puts "=========="
-    p resource
-    puts "=========="
     case resource
     when :admin
       new_admin_session_path
