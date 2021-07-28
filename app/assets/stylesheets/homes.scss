@@ -12,19 +12,19 @@
 
 #container{
   object-fit: contain;
-  height: 300px;
+  height: 380px;
   width: auto;
   background-size:cover;
   background-position:bottom;
 }
 
 .image1 {
-  background-image: url(絶景.jpg);
+  background-image: url(home2.jpg);
   background-size: cover; /* 縦横比を維持したまま背景領域を埋め尽くす */
   background-position: center; /* 背景画像を中央に配置 */
 }
 .image2 {
-  background-image: url(yakult.jpg);
+  background-image: url(big_cake.jpg);
 }
 .image3 {
   background-image: url(tezukuri.jpg);
