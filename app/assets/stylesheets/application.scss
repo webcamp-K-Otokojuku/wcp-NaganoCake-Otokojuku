@@ -43,10 +43,18 @@
 
 // footer{
 //     width: 100%;
-    
+
 //     text-align: center;
 //     padding: 30px 0;
 
 //  position: absolute;/*←絶対位置*/
 //     bottom: 0; /*下に固定*/
 // }
+
+.about-visual{
+ width:auto;
+ background-image:url('背景1.jpeg');
+ background-size:cover;
+ background-position:center;
+ opacity:0.7;
+}
