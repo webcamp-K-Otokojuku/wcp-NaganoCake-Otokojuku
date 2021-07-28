@@ -43,4 +43,3 @@ $(document).ready(function () {
     hidePrevious : false
   });
 });
-
