@@ -14,97 +14,97 @@
 
   <body>
     <div class="wrapper">
-    <header>
-      <nav class="navbar navbar-expand-lg navbar-dark bg-success">
-        <div class="container">
-          <!--turbolinks機能()がjavascripts-skippr機能を阻害しているため無効化-->
-          <%= link_to root_path, data: {"turbolinks" => false} do %>
-            <%= image_tag('NaganoCAKELogo.png', size:"150x70") %>
-          <% end %>
-          <!--<a class="navbar-brand" href="/">-->
-          <!--  <strong>ながのCAKE</strong>-->
-          <!--</a>-->
-
-          <% if customer_signed_in? %>
-            <section class="welcome-message ml-5 mt-3 text-light">
-              <p>ようこそ<%= current_customer.last_name %><%= current_customer.first_name %>さん！！</p>
-            </section>
-          <% end %>
-
-
-          <button class="navbar-toggler"
-                  type="button"
-                  data-toggle="collapse"
-                  data-target="#navbarNavDropdown"
-                  aria-controls="navbarNavDropdown"
-                  aria-expanded="true"
-                  aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-
-          <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav ml-auto">
-              <% if customer_signed_in? %>
-                <li class="ml-3 my-2">
-                  <%= link_to 'マイページ', customers_path, class:"btn btn-light text-dark nav-link" %>
-                </li>
-                <li class="ml-3 my-2">
-                  <%= link_to '商品一覧', items_path, class:"btn btn-light text-dark nav-link" %>
-                </li>
-                <li class="ml-3 my-2">
-                  <%= link_to 'カート', cart_items_path, class:"btn btn-light text-dark nav-link" %>
-                </li>
-                <li class="ml-3 my-2">
-                  <%= link_to 'ログアウト', destroy_customer_session_path, method: :delete, class:"btn btn-light text-dark nav-link" %>
-                </li>
-              <% elsif admin_signed_in? %>
-                <li class="ml-3 my-2">
-                  <%= link_to '商品一覧', admin_items_path, class:"btn btn-light text-dark nav-link" %>
-                </li>
-                <li class="ml-3 my-2">
-                  <%= link_to '会員一覧', admin_customers_path, class:"btn btn-light text-dark nav-link" %>
-                </li>
-                <li class="ml-3 my-2">
-                  <%= link_to '注文履歴一覧', admin_orders_path, class:"btn btn-light text-dark nav-link" %>
-                </li>
-                <li class="ml-3 my-2">
-                  <%= link_to 'ジャンル一覧', admin_genres_path, class:"btn btn-light text-dark nav-link" %>
-                </li>
-                <li class="ml-3 my-2">
-                  <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class:"btn btn-light text-dark nav-link" %>
-                </li>
-              <% else %>
-                <li class="ml-3 my-2">
-                  <%= link_to 'About', homes_about_path, class:"btn btn-light text-dark nav-link" %>
-                </li>
-                <li class="ml-3 my-2">
-                  <%= link_to '商品一覧', items_path, class:"btn btn-light text-dark nav-link" %>
-                </li>
-                <li class="ml-3 my-2">
-                  <%= link_to '新規登録', new_customer_registration_path, class:"btn btn-light text-dark nav-link" %>
-                </li>
-                <li class="ml-3 my-2">
-                  <%= link_to 'ログイン', new_customer_session_path, class:"btn btn-light text-dark nav-link" %>
-                </li>
-              <% end %>
-            </ul>
+      <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+          <div class="container">
+            <!--turbolinks機能()がjavascripts-skippr機能を阻害しているため無効化-->
+            <%= link_to root_path, data: {"turbolinks" => false} do %>
+              <%= image_tag('NaganoCAKELogo.png', size:"150x70") %>
+            <% end %>
+            <!--<a class="navbar-brand" href="/">-->
+            <!--  <strong>ながのCAKE</strong>-->
+            <!--</a>-->
+  
+            <% if customer_signed_in? %>
+              <section class="welcome-message ml-5 mt-3 text-light">
+                <p>ようこそ<%= current_customer.last_name %><%= current_customer.first_name %>さん！！</p>
+              </section>
+            <% end %>
+  
+  
+            <button class="navbar-toggler"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#navbarNavDropdown"
+                    aria-controls="navbarNavDropdown"
+                    aria-expanded="true"
+                    aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+  
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+              <ul class="navbar-nav ml-auto">
+                <% if customer_signed_in? %>
+                  <li class="ml-3 my-2">
+                    <%= link_to 'マイページ', customers_path, class:"btn btn-light text-dark nav-link" %>
+                  </li>
+                  <li class="ml-3 my-2">
+                    <%= link_to '商品一覧', items_path, class:"btn btn-light text-dark nav-link" %>
+                  </li>
+                  <li class="ml-3 my-2">
+                    <%= link_to 'カート', cart_items_path, class:"btn btn-light text-dark nav-link" %>
+                  </li>
+                  <li class="ml-3 my-2">
+                    <%= link_to 'ログアウト', destroy_customer_session_path, method: :delete, class:"btn btn-light text-dark nav-link" %>
+                  </li>
+                <% elsif admin_signed_in? %>
+                  <li class="ml-3 my-2">
+                    <%= link_to '商品一覧', admin_items_path, class:"btn btn-light text-dark nav-link" %>
+                  </li>
+                  <li class="ml-3 my-2">
+                    <%= link_to '会員一覧', admin_customers_path, class:"btn btn-light text-dark nav-link" %>
+                  </li>
+                  <li class="ml-3 my-2">
+                    <%= link_to '注文履歴一覧', admin_orders_path, class:"btn btn-light text-dark nav-link" %>
+                  </li>
+                  <li class="ml-3 my-2">
+                    <%= link_to 'ジャンル一覧', admin_genres_path, class:"btn btn-light text-dark nav-link" %>
+                  </li>
+                  <li class="ml-3 my-2">
+                    <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class:"btn btn-light text-dark nav-link" %>
+                  </li>
+                <% else %>
+                  <li class="ml-3 my-2">
+                    <%= link_to 'About', homes_about_path, class:"btn btn-light text-dark nav-link" %>
+                  </li>
+                  <li class="ml-3 my-2">
+                    <%= link_to '商品一覧', items_path, class:"btn btn-light text-dark nav-link" %>
+                  </li>
+                  <li class="ml-3 my-2">
+                    <%= link_to '新規登録', new_customer_registration_path, class:"btn btn-light text-dark nav-link" %>
+                  </li>
+                  <li class="ml-3 my-2">
+                    <%= link_to 'ログイン', new_customer_session_path, class:"btn btn-light text-dark nav-link" %>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
           </div>
-        </div>
-      </nav>
-      <nav class="navbar navbar-expand-lg navbar-dark bg-success">
-        <div class="container">
-          <%= form_with url: searches_path, method: :get, class: "navbar-nav ml-auto" , local: true do |f|  %>
-            <%= f.text_field 'search[value]', placeholder: "Search                           \uF002", class: 'fa searchicon' %>
-          <% end %>
-        </div>
-      </nav>
-    </header>
-
-    <%= yield %>
-
-    <footer class="mt-5">
-      <div class="text-center py-5 text-light bg-success">©️ Otokojuku</div>
-    </footer>
-  </div>
+        </nav>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+          <div class="container">
+            <%= form_with url: searches_path, method: :get, class: "navbar-nav ml-auto" , local: true do |f|  %>
+              <%= f.text_field 'search[value]', placeholder: "Search                           \uF002", class: 'fa searchicon' %>
+            <% end %>
+          </div>
+        </nav>
+      </header>
+  
+      <%= yield %>
+  
+      <footer>
+        <div class="text-center py-5 text-light bg-success">©️ Otokojuku</div>
+      </footer>
+    </div>
   </body>
 </html>
