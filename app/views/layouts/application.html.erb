@@ -90,22 +90,21 @@
               </ul>
             </div>
           </div>
-        </div>
-      </nav>
-      <nav class="navbar navbar-expand-lg navbar-dark bg-success">
-        <div class="container">
-          <%= form_with url: searches_path, method: :get, class: "navbar-nav ml-auto" , local: true do |f|  %>
-            <%= f.text_field 'search[value]', placeholder: "Search                           \uF002", class: 'fa searchicon' %>
-          <% end %>
-        </div>
-      </nav>
-    </header>
-
-    <%= yield %>
-
-    <footer class="mt-5">
-      <div class="text-center py-5 text-light bg-success">©️ Otokojuku</div>
-    </footer>
+        </nav>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+          <div class="container">
+            <%= form_with url: searches_path, method: :get, class: "navbar-nav ml-auto" , local: true do |f|  %>
+              <%= f.text_field 'search[value]', placeholder: "Search                           \uF002", class: 'fa searchicon' %>
+            <% end %>
+          </div>
+        </nav>
+      </header>
+  
+      <%= yield %>
+  
+      <footer>
+        <div class="text-center py-5 text-light bg-success">©️ Otokojuku</div>
+      </footer>
     </div>
   </body>
 </html>
