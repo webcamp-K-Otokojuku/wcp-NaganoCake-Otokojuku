@@ -1,3 +1,35 @@
 // Place all the styles related to the homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// .main-visual{
+//   width:auto;
+//   height:300px;
+//   background-image:url(風景1.jpeg);
+//   background-size:cover;
+//   background-position:bottom;
+// }
+
+#container{
+  object-fit: contain;
+  height: 380px;
+  width: auto;
+  background-size:cover;
+  background-position:bottom;
+}
+
+.image1 {
+  background-image: url(home2.jpg);
+  background-size: cover; /* 縦横比を維持したまま背景領域を埋め尽くす */
+  background-position: center; /* 背景画像を中央に配置 */
+}
+.image2 {
+  background-image: url(big_cake.jpg);
+}
+.image3 {
+  background-image: url(tezukuri.jpg);
+}
+.image_winter{
+  background-image: url(main_kamakura.jpg);
+  background-position: bottom;
+}

@@ -1,3 +1,40 @@
 // Place all the styles related to the cart_items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.link_font_color {
+  text-decoration: none;
+  color: white;
+}
+
+.item_name {
+  width: 500px;
+}
+
+.item_price {
+  width: 120px;
+}
+
+.item_quantity {
+  width: 120px;
+}
+
+.item_sub_total {
+  width: 120px;
+}
+
+.item_delete {
+  width: 120px;
+}
+
+.cart_head {
+  height: 100px;
+}
+
+.cart-table-border {
+  border: 1px solid black;
+  border-right: 1px solid black;
+}
+
+.total-border {
+  border: 1px solid black;
+}

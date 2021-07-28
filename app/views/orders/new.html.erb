@@ -1,0 +1,68 @@
+<div class="container mt-5 px-1 px-sm-0">
+  <div class="row">
+    <div class="col-md-12">
+      <h2 class="bg-light">注文情報入力</h2>
+        <div>
+           <%= form_with method: :post, url:orders_confirm_path , local:true do |f| %>
+          <p>
+            <h2>支払方法</h2>
+            <%= f.radio_button :method_pay_way, 0, checked: "checked" %>
+            <%= f.label :クレジットカード %></br>
+            <%= f.radio_button :method_pay_way, 1 %>
+            <%= f.label :銀行振込 %>
+          </p>
+          <p>
+            <h2>お届け先</h2>
+            <%= f.radio_button :method_address, 0, checked: "checked" %>
+            <%= f.label :ご自身の住所%></br>
+            〒<%= @customer.postcode %> <%= @customer.address %></br>
+            <%= @customer.last_name %><%= @customer.first_name %></br>
+      
+            <%= f.radio_button :method_address, 1 %>
+            <%= f.label :登録住所から選択 %></br>
+            <%= f.collection_select :shopping_address_for_order, @shopping_addresses, :id, :shopping_address_orders_view %><br>
+      
+            <%= f.radio_button :method_address, 2 %>
+            <%= f.label :新しいお届け先 %></br>
+            <table>
+              <tr>
+                <td>
+                  <label>郵便番号(ハイフンなし)</label>
+                </td>
+                <td>
+                  <%= f.text_field :postcode, placeholder: "000000" %>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label>住所</label>
+                </td>
+                <td>
+                  <%= f.text_field :address, size: 55, placeholder: "東京都渋谷区代々木神園町0-0" %>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label>宛名</label>
+                </td>
+                <td>
+                  <%= f.text_field :name, placeholder: "令和道子" %>
+                </td>
+              </tr>
+            </table>
+            <p><%= f.submit '確認画面へ' ,class: "btn btn-sm btn-primary "%></p>
+          </p>
+          <% end %>
+      
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  
+
+
+
+
+
