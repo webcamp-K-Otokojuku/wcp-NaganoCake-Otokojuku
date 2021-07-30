@@ -1,0 +1,10 @@
+.container.mt-3
+  .row
+    .col-md-12
+      h2
+        | ジャンル編集
+      .edit-form.mt-5
+        = form_with model: @genre, url: admin_genre_path(@genre.id), local: true do |f|
+          = f.label :ジャンル名
+          = f.text_field :category, placeholder: 'ジャンル名'
+          = f.submit '変更を保存'

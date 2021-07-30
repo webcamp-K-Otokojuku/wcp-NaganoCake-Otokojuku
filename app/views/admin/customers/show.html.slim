@@ -1,0 +1,70 @@
+.container.mt-5
+  .row
+    .col-md-12
+      h2
+        = @customer.last_name
+        = @customer.first_name
+        | さんの会員詳細
+      table.table
+        tbody
+          tr
+            td
+              p
+                | 会員ID
+            td
+              = @customer.id
+          tr
+            td
+              p
+                | 氏名
+            td
+              = @customer.last_name
+              = @customer.first_name
+          tr
+            td
+              p
+                | フリガナ
+            td
+              = @customer.last_name_kana
+              = @customer.first_name_kana
+          tr
+            td
+              p
+                | 郵便番号
+            td
+              = @customer.postcode
+          tr
+            td
+              p
+                | 住所
+            td
+              = @customer.address
+          tr
+            td
+              p
+                | 電話番号
+            td
+              = @customer.tel
+          tr
+            td
+              p
+                | メールアドレス
+            td
+              = @customer.email
+          tr
+            td
+              p
+                | ステータス
+            td
+              - if @customer.is_deleted == "有効"
+                p.text-success
+                  | 有効
+              - else
+                p.text-secondary
+                  | 退会
+          tr
+            td
+            td
+              = link_to '編集する', edit_admin_customer_path(@customer.id), class:"btn btn-success text-light"
+            td
+              = link_to '注文履歴一覧を見る', admin_orders_path, class:"btn btn-primary text-light"

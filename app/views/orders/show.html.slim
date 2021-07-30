@@ -1,0 +1,86 @@
+.container.mt-5.px-1.px-sm-0.ml-4
+  .row
+    .col-md-3.offset-md-1.mb-5
+      h3.bg-light.text-center
+        | 注文履歴詳細
+  .row.ml-auto
+    .col-md-2
+      h5
+        | 注文情報
+    .col-md-2.offset-md-6
+      h5
+        | 請求情報
+  .row.ml-auto
+    .col-md-8
+      table.table.table-bordered
+        tr
+          td.table-secondary[style="width: 15%"]
+            | 注文日
+          td
+            = @order.created_at.strftime('%Y/%m/%d')
+        tr
+          td.table-secondary
+            | 配送先
+          td
+            |  〒
+            = @order.postcode
+            = @order.address
+            = @order.name
+        tr
+          td.table-secondary
+            | 支払方法
+          td
+            = @order.pay_way
+        tr
+          td.table-secondary
+            | ステータス
+          td
+            = @order.status
+    .col-md-4
+      table.table.table-bordered
+        tr
+          td.table-secondary
+            | 商品合計
+          td
+            = (@order.total_price - @order.fee).to_s(:delimited)
+            | 円
+        tr
+          td.table-secondary
+            | 配送料
+          td
+            = @order.fee
+            | 円
+        tr
+          td.table-secondary
+            | ご請求額
+          td
+            = @order.total_price.to_s(:delimited)
+            | 円
+  div[calss="row"]
+    .col-md-2
+      h5
+        | 注文商品
+  div[calss="row"]
+    .col-md-10
+      table.table.table-bordered
+        tr.table-secondary
+          td[style="width: 55%"]
+            | 商品
+          td[style="width: 15%"]
+            | 単価(税込み)
+          td[style="width: 15%"]
+            | 個数
+          td[style="width: 15%"]
+            | 小計
+        - @order_items.each do |order_item|
+          tr
+            td
+              = order_item.item.name
+            td
+              = order_item.include_tax.to_s(:delimited)
+              | 円
+            td
+              = order_item.quantity
+            td
+              = (order_item.include_tax * order_item.quantity).to_s(:delimited)
+              | 円

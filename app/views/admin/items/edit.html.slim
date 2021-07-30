@@ -1,0 +1,44 @@
+.containar
+  .row.no-gutters
+    .col-md-3.text-center.m-5
+      h3
+        | 商品編集
+  .row
+    .col-md-10.offset-md-1
+      = form_with model: @item,url: admin_item_path(@item), local: true do |f|
+        table
+          tr
+            th
+              | 商品画像
+            td
+              = f.attachment_field :item_image
+          tr
+            th.pt-5
+              | 商品名
+            td.pt-5
+              = f.text_field :name,  placeholder: '商品名'
+          tr
+            th.pt-5
+              | 商品説明
+            td.pt-5
+              = f.text_area :introduction,  placeholder: 'ここに説明文を記述します'
+          tr
+            th.pt-5
+              | ジャンル
+            td.pt-5
+              = f.collection_select(:genre_id, @genres, :id, :category, prompt: '-- 選択してください --')
+          tr
+            th.pt-5
+              | 税抜価格
+            td.pt-5
+              = f.text_field :price, placeholder: '1000'
+              |  円
+          tr
+            th.pt-5
+              | 販売ステータス
+            td.pt-5.pl-3
+              = f.radio_button :status, true
+              |  販売中 
+              = f.radio_button :status, false
+              |  販売停止中 
+              = f.submit "変更を保存", class:"btn btn-success btn-md"

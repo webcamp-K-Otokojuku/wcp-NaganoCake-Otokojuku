@@ -1,0 +1,43 @@
+.container.mt-5
+  .row
+    .col-md-12
+      h2
+        | 会員一覧
+      table.table
+        thead
+          tr
+            th
+              p
+                | 会員ID
+            th
+              p
+                | 氏名
+            th
+              p
+                | メールアドレス
+            th
+              p
+                | ステータス
+        tbody
+          - @customers.each do |customer|
+            tr
+              td
+                p
+                  = customer.id
+              td
+                = link_to admin_customer_path(customer.id) do
+                  p
+                    = customer.last_name
+                    = customer.first_name
+              td
+                p
+                  = customer.email
+              td
+                - if customer.is_deleted == "有効"
+                  p.text-success
+                    | 有効
+                - else
+                  p.text-secondary
+                    | 退会
+      .d-flex.justify-content
+        = paginate @customers

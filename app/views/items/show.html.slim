@@ -1,0 +1,43 @@
+.container.mt-5.px-5.px-sm-0
+  .row
+    .col-md-2.mt-5
+      = render 'genres/index'
+    .col-md-9.offset-md-1
+      = attachment_image_tag @item, :item_image, :fill, 500, 300, format: 'jpeg', fallback: "no_image.jpg"
+      table.table.table-white.w-50
+        tr
+          th[height="50"]
+            | 商品名
+          td
+            = @item.name
+        tr
+          th[height="50"]
+            | 商品説明
+          td
+            = @item.introduction
+        tr
+          th[height="50"]
+            | 税込価格
+          td
+            = @item.tax_price.to_s(:delimited)
+            | 円
+        tr
+          th[height="50"]
+            | 販売ステータス
+          td
+            - if @item.status == true
+              p.text-success
+                | 販売中
+            - else
+              p.text-danger
+                | 販売停止中
+      table
+        - if customer_signed_in?
+          tr
+            td
+              - if @item.status == true
+                = form_with model: @cart_item, url: add_item_path ,local: true do |f|
+                  = f.hidden_field :item_id, :value => @item.id
+                  = f.select :quantity, options_for_select((1..99).to_a), include_blank: "個数選択"
+                  br
+                  = f.submit 'カートに入れる', class:"btn btn-success mt-3"

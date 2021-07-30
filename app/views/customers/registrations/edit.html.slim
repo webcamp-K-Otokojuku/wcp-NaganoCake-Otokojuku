@@ -1,0 +1,61 @@
+.container.mt-5.px-1.px-sm-0.ml-5
+  .row
+    .col-md-3.offset-md-1.mb-3
+      h3.bg-light.text-center
+        | 会員情報編集
+  .row
+    .col-md-9
+      = form_with model: @customer, url: customers_update_path, id: 'edit_customer', class: 'new_customer', local: true do |f|
+        .fald
+          table.table.table-borderless
+            tr
+              td[style="width: 20%"]
+                | 名前
+              td[style="width: 15%"]
+                = f.text_field :last_name, class: 'rounded'
+              td.table_right[style="width: 20%"]
+                = f.text_field :first_name, class: 'rounded'
+              td
+            tr
+              td
+                | フリガナ
+              td
+                = f.text_field :last_name_kana, class: 'rounded'
+              td.table_right
+                = f.text_field :first_name_kana, class: 'rounded'
+              td
+            tr
+              td
+                | 郵便番号
+              td
+                = f.text_field :postcode, class: 'rounded'
+              td
+              td
+            tr
+              td
+                | 住所
+              td[colspan="3"]
+                = f.text_field :address, size: 70,class: 'rounded'
+              td
+              td
+            tr
+              td
+                | 電話番号
+              td
+                = f.text_field :tel, class: 'rounded'
+              td
+              td
+            tr
+              td
+                | メールアドレス
+              td
+                = f.email_field :email, autocomplete: "email", class: 'rounded'
+              td
+              td
+            tr
+              td
+              td
+                = f.submit "編集内容を保存" ,class: 'btn w-100 btn-success'
+              td
+              td
+                = link_to '退会する', customers_hide_path,  class: "btn btn-danger"

@@ -1,0 +1,11 @@
+table.table.table-borderless.border.border-dark.table-hover
+  thead.text-center.border.border-dark.table-sm
+    tr
+      th
+        | ジャンル検索
+  tbody
+    - @genres.each do |genre|
+      tr
+        td
+          = link_to searches_path('search[genreid]': genre.id), class:"text-dark" do
+            = genre.category

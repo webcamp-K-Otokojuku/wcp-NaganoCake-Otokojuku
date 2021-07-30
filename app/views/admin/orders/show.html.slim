@@ -1,0 +1,98 @@
+.container
+  .row
+    .col-md-3.my-3
+      h3
+        | 注文履歴詳細
+  .row.pb-5.mt-0
+    .col-md-6
+      = form_with model: @order,url: admin_order_path(@order.id), local: true do |f|
+        table.table
+          tbody
+            tr
+              th
+                | 購入者
+              td
+                = link_to admin_customer_path(@order.customer_id) do
+                  = @order.customer.last_name
+                  = @order.customer.first_name
+              td
+            tr
+              th
+                | 注文日
+              td
+                = @order.created_at.strftime('%Y/%m/%d')
+              td
+            tr
+              th
+                | 配送先
+              td
+                | 〒 
+                = @order.postcode
+                = @order.address
+                br
+                = @order.name
+              td
+            tr
+              th
+                | 支払方法
+              td
+                = @order.pay_way
+              td
+            tr
+              th
+                | 注文ステータス
+              td
+                = f.select :status, Order.statuses.keys
+              td
+                = f.submit "更新", class: "btn btn-success btn-block"
+    .col-sm-9
+      table.table.border-bottom
+        thead.bg-light
+          tr
+            th
+              | 商品名
+            th
+              | 単価 (税込)
+            th
+              | 数量
+            th
+              | 小計
+            th
+              | 製作ステータス
+        - @order_items.each do |order_item|
+          tbody
+            tr
+              td
+                = order_item.item.name
+              td
+                = order_item.include_tax.to_s(:delimited)
+                |  円
+              td
+                = order_item.quantity
+              td
+                = (order_item.include_tax * order_item.quantity).to_s(:delimited)
+                |  円
+              td
+                = form_with model: [@order, order_item],url: admin_order_order_item_path(@order, order_item), local: true do |f|
+                  = f.select :status, OrderItem.statuses.keys
+                  = f.submit "更新", class: "btn btn-success ml-3"
+    .col-md-3
+      table.table.table-bordered
+        tr
+          td
+            | 商品合計
+          td
+            = (@order.total_price - @order.fee).to_s(:delimited)
+            |  円
+        tr
+          td
+            | 送料
+          td
+            = @order.fee
+            |  円
+        tr
+          td
+            | 請求金額合計
+          td
+            = @order.total_price.to_s(:delimited)
+            |  円

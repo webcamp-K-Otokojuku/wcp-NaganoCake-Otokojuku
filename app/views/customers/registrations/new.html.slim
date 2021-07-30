@@ -1,0 +1,130 @@
+.container.mt-5
+  .row
+    .col-md-12
+      h2
+        | 新規会員登録
+      = form_with model: @customer, url: customer_registration_path, id: 'new_customer', class: 'new_customer', local: true do |f|
+        - if @customer.errors.any?
+
+        .field
+          table
+            tr
+              td
+                p
+                  | 名前
+              td
+                p
+                  = f.label :last_name, "(姓)"
+              td.table_form
+                = f.text_field :last_name, placeholder: "令和", autofocus: true
+                - if @customer.errors.include?(:last_name)
+                  p.error-messe
+                    = @customer.errors.full_messages_for(:last_name).first
+              td.table_kana
+                p
+                  = f.label :first_name, "(名)"
+              td.table_right
+                = f.text_field :first_name, placeholder: "道子", autofocus: true
+                - if @customer.errors.include?(:first_name)
+                  p.error-messe
+                    = @customer.errors.full_messages_for(:first_name).first
+            tr
+              td
+                p
+                  | フリガナ
+              td
+                p
+                  = f.label :last_name_kana, "(セイ)"
+              td
+                = f.text_field :last_name_kana, placeholder: "レイワ", autofocus: true
+                - if @customer.errors.include?(:last_name_kana)
+                  p.error-messe
+                    = @customer.errors.full_messages_for(:last_name_kana).first
+              td.table_kana
+                p
+                  = f.label :first_name_kana, "(メイ)"
+              td.table_right
+                = f.text_field :first_name_kana, placeholder: "ミチコ", autofocus: true
+                - if @customer.errors.include?(:first_name_kana)
+                  p.error-messe
+                    = @customer.errors.full_messages_for(:first_name_kana).first
+            tr
+              td
+                p
+                  = f.label :email, "メールアドレス"
+              td
+              td
+                = f.email_field :email, placeholder: "sample@example.com", autofocus: true, autocomplete: "email"
+                - if @customer.errors.include?(:email)
+                  p.error-messe
+                    = @customer.errors.full_messages_for(:email).first
+              td
+            tr
+              td
+                p
+                  = f.label :postcode, "郵便番号(ハイフンなし)"
+              td
+              td
+                = f.text_field :postcode, placeholder: "000000", autofocus: true
+                - if @customer.errors.include?(:postcode)
+                  p.error-messe
+                    = @customer.errors.full_messages_for(:postcode).first
+              td
+            tr
+              td
+                p
+                  = f.label :address, "住所"
+              td
+              td[colspan="3"]
+                = f.text_field :address, size: 55, placeholder: "東京都渋谷区代々木神園町0-0", autofocus: true
+                - if @customer.errors.include?(:address)
+                  p.error-messe
+                    = @customer.errors.full_messages_for(:address).first
+            tr
+              td
+                p
+                  = f.label :tel, "電話番号(ハイフンなし)"
+              td
+              td
+                = f.text_field :tel, placeholder: "00000000000", autofocus: true
+                - if @customer.errors.include?(:tel)
+                  p.error-messe
+                    = @customer.errors.full_messages_for(:tel).first
+              td
+            tr
+              td
+                p
+                  = f.label :password, "パスワード(6文字以上)"
+              td
+              td
+                - if @minimum_password_length
+
+                = f.password_field :password, autocomplete: "new-password"
+                - if @customer.errors.include?(:password)
+                  p.error-messe
+                    = @customer.errors.full_messages_for(:password).first
+              td
+            tr
+              td
+                p
+                  = f.label :password_confirmation, "パスワード(確認用)"
+              td
+              td
+                = f.password_field :password_confirmation, autocomplete: "new-password"
+                - if @customer.errors.include?(:password_confirmation)
+                  p.error-messe
+                    = @customer.errors.full_messages_for(:password_confirmation).first
+            tr
+              td
+              td
+              td
+                .actions
+                  = f.submit "新規登録", class: "btn btn-success"
+              td
+      p
+        | 既に登録済みの方
+      p
+
+      .devise_link_to
+        = link_to "こちら", new_session_path(resource_name)
+      |  からログインして下さい。 

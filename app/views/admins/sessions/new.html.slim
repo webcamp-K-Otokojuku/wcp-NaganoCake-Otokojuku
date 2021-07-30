@@ -1,0 +1,22 @@
+.container
+  .row
+    .col-sm-12.col-md-8.px-sm-0.mx-auto
+      h3.my-5
+        | 管理者ログイン
+      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        .field
+          table.table.table-borderless
+            tr
+              td
+                = f.label :メールアドレス
+              td
+                = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'naganocake@naganocake.com', size: 40
+            tr
+              td
+                = f.label :パスワード
+              td
+                = f.password_field :password, autocomplete: "current-password", size: 40
+            tr
+              td
+              td
+                = f.submit "ログイン", class: "btn w-25 btn-primary center-block"

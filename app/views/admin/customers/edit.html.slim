@@ -1,0 +1,71 @@
+.container.mt-5
+  .row
+    .col-md-12
+      h2
+        | 会員情報編集
+      = form_with model: @customer, url: admin_customer_path(@customer.id), local: true do |f|
+        table.table
+          tr
+            td
+              p
+                | 会員ID
+            td
+            td
+              = @customer.id
+          tr
+            td
+              p
+                | 名前
+            td
+            td.table_form
+              = f.text_field :last_name
+            td
+              = f.text_field :first_name
+          tr
+            td
+              p
+                | フリガナ
+            td
+            td
+              = f.text_field :last_name_kana
+            td
+              = f.text_field :first_name_kana
+          tr
+            td
+              = f.label :postcode, "郵便番号"
+            td
+            td
+              = f.text_field :postcode, placeholder:"ハイフンなし"
+          tr
+            td
+              = f.label :address, "住所"
+            td
+            td[colspan="3"]
+              = f.text_field :address, size: 55
+          tr
+            td
+              = f.label :tel, "電話番号"
+            td
+            td
+              = f.text_field :tel, placeholder:"ハイフンなし"
+          tr
+            td
+              = f.label :email, "メールアドレス"
+            td
+            td
+              = f.email_field :email, autocomplete: "email"
+          tr
+            td
+              p
+                | 会員ステータス
+            td
+            td
+              = f.radio_button :is_deleted, :有効
+              |  有効 
+              = f.radio_button :is_deleted, :退会
+              |  退会 
+          tr
+            td
+            td
+            td
+              = f.submit '変更を保存', class:"btn btn-success"

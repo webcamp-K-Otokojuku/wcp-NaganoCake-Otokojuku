@@ -1,0 +1,70 @@
+.container.mt-5.px-1.px-sm-0.ml-5
+  .row
+    .col-3.offset-md-1
+      h3.bg-light.text-center
+        | 注文情報確認
+  .row
+    .col-9.ml-auto
+      table.table.table-bordered
+        tr.table-secondary
+          th
+            | 商品名
+          th
+            | 単価(税込み)
+          th
+            | 数量
+          th
+            | 小計
+        - @cart_items.each do |cart_item|
+          tr
+            td
+              = attachment_image_tag cart_item.item, :item_image, :fill, 100, 50, format: 'jpeg', fallback: "no_image.jpg", size: '100x50'
+              = cart_item.item.name
+            td.align-middle
+              = cart_item.item.tax_price.to_s(:delimited)
+              | 円
+            td.align-middle
+              = cart_item.quantity
+            td.align-middle
+              = (cart_item.item.tax_price * cart_item.quantity).to_s(:delimited)
+              | 円
+    .col-3
+      table.table.table-bordered
+        tr
+          th.table-secondary
+            | 送料
+          td
+            = session[:order][:fee].to_s(:delimited)
+            | 円
+        tr
+          th.table-secondary
+            | 商品合計
+          td
+            = (session[:order][:total_price] - session[:order][:fee]).to_s(:delimited)
+            | 円 
+        tr
+          th.table-secondary
+            | 請求金額
+          td
+            = session[:order][:total_price].to_s(:delimited)
+            | 円
+  .row
+    .col-9
+      table.table.table-borderless
+        tr
+          th[style="width: 11%"]
+            | 支払方法
+          td
+            = session[:order]["pay_way"]
+        tr
+          th
+            | お届け先
+          td
+            |  〒
+            = session[:order][:postcode]
+            = session[:order][:address]
+            = session[:order][:name]
+  .row
+    .col-2.offset-md-5.mt-5
+      = form_with method:@order,url: {controller: 'orders', action: 'create'}, local:true do |f|
+        = f.submit "注文を確定する" ,class: "btn w-100 btn-success"
