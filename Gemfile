@@ -79,5 +79,5 @@ gem 'pry-rails'
 gem 'kaminari','~> 1.2.1'
 
 gem 'slim-rails'
-gem 'html2slimgit '
+gem 'html2slim'
 
